@@ -13,17 +13,16 @@ header {
 }
 
 .marca {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 0px;
+    text-align: center;
 }
 
 .imagen {
-    max-width: 10%;
+    width: 20%;
     height: auto;
+    display: inline-block;
+    /*Opcional, si quieres ajustar el espacio entre las imagenes:*/
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -214,6 +213,7 @@ header {
     border-radius: 5px;
     cursor: pointer;
 }
+
 .flecha {
     position: absolute;
     top: 50%;
