@@ -1,3 +1,17 @@
+/* General styles */
+body {
+    background-color: #000000;
+    color: #f0dfc8;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Header and branding */
+header {
+    padding: 20px;
+}
+
 .marca {
     display: flex;
     flex-direction: column;
@@ -12,42 +26,9 @@
     height: auto;
 }
 
-body {
-    background-color: #000000;
-    color: #f0dfc8;
-}
 
-/* Estilos generales */
-#titulo {
-    padding-left: 20px;
-    padding-top: 0.01cm;
-    margin: 20px;
-    margin-left: 30px;
-    width: 92%;
-    background: #0ead08b9;
-}
-
-.container {
-    overflow: hidden;
-    position: relative;
-    /* Para posicionar las flechas */
-}
-
-/* Header */
-#header {
-    display: flex;
-    text-align: left;
-    clear: both;
-    width: calc(100% - 40px);
-    height: 47px;
-    padding: 1 4px;
-    overflow: hidden;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-/* Menú */
-#menu {
+/* Main navigation */
+.main-menu {
     clear: both;
     width: 100%;
     height: 45px;
@@ -58,7 +39,7 @@ body {
     overflow: hidden;
 }
 
-#menu ul {
+.main-menu ul {
     display: flex;
     align-items: center;
     padding-left: 15px;
@@ -68,23 +49,23 @@ body {
     list-style: none;
 }
 
-#menu ul div {
+.main-menu ul div {
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
     width: 100%;
     font-size: 15px;
     list-style: none;
 }
 
-#menu ul li a {
+.main-menu ul li a {
     text-decoration: none;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding-left: 10px;
     padding-right: 10px;
     margin-left: 5px;
     color: #afa1a1;
-    transition: background-color 0.3s ease;
-    box-sizing: border-box;
     background: rgba(217, 217, 217, 0.58);
     border: 1px solid white;
     backdrop-filter: blur(6px);
@@ -92,30 +73,27 @@ body {
     text-align: center;
     cursor: pointer;
     transition: all 0.5s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     user-select: none;
     font-weight: bolder;
 }
 
-#menu ul li a:hover {
+.main-menu ul li a:hover {
     background: linear-gradient(to bottom, #f2f2f2, #dad9d4);
     border: 1px solid black;
     transform: scale(1.05);
 }
 
-#menu ul li a:active {
+.main-menu ul li a:active {
     transform: scale(0.95) rotateZ(1.7deg);
 }
 
-/* From Uiverse.io by zanina-yassine */
-#menu .botones button {
+/* Menu buttons */
+.main-menu .botones button {
     min-width: 30px;
     min-height: 30px;
     position: relative;
     cursor: pointer;
-    padding: 5px 11px 5px 11px;
+    padding: 5px 11px;
     margin-left: 10px;
     border: 0;
     border-radius: 100px;
@@ -123,93 +101,112 @@ body {
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     background: radial-gradient(ellipse at bottom,
             rgba(217, 217, 217, 0.58) 0%,
-            rgba(184, 158, 158, 0.22)45%);
-
+            rgba(184, 158, 158, 0.22) 45%);
     color: #afa1a1;
-
 }
 
-#menu .botones button ::before {
+.main-menu .botones button::before {
     content: "";
     width: 70%;
     height: 1px;
-
     position: absolute;
     bottom: 0;
     left: 15%;
-
-    background: rgb(255, 255, 255);
     background: linear-gradient(90deg,
             rgba(255, 255, 255, 0) 0%,
             rgba(255, 255, 255, 1) 50%,
             rgba(255, 255, 255, 0) 100%);
     opacity: 0.2;
-
     transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
 
-#menu .botones button:hover {
+.main-menu .botones button:hover {
     border: 1px solid black;
     color: rgb(102, 92, 92);
     transform: scale(1.1) translateY(-3px);
 }
 
-#menu .botones button::hover::before {
+.main-menu .botones button:hover::before {
     opacity: 1;
 }
 
-/* Elementos deslizables */
+/* Main content sections */
+.section-header {
+    padding: 20px;
+    margin: 20px 30px;
+    width: 92%;
+    background: #0ead08b9;
+}
+
+.section-header h1 {
+    margin-top: 0.5em;
+}
+
+.section-header .description {
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.container {
+    position: relative;
+    overflow: hidden;
+}
+
 .elementos {
     width: 200%;
     display: flex;
     transition: transform 0.9s ease;
 }
 
-article {
+/* Product cards */
+.producto-card {
     width: calc(50% - 20px);
-    /* Ajuste basado en el margen */
-    height: 300px;
+    height: 400px;
     background-color: #f1f1f1;
     border-radius: 10px;
     margin: 10px;
     padding: 18px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
-article h2 {
+.producto-card h2 {
     font-size: 20px;
     color: #333;
+    margin-top: 0;
 }
 
-article #Descripcion {
+.producto-card .descripcion {
     font-size: 14px;
     color: #333;
     margin: 10px;
+    flex-grow: 1;
 }
 
-article footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-}
-
-article footer div {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-article footer img {
+.producto-card img {
     width: 150px;
     height: 150px;
     border-radius: 20%;
     object-fit: cover;
+    margin: 10px auto;
+}
+
+.producto-compra {
+    color: #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     margin-top: 10px;
 }
 
-article footer button {
-    margin-left: 10px;
+.producto-compra .precio {
+    font-weight: bold;
+    margin: 0;
+}
+
+.btn-comprar {
     padding: 5px 10px;
     background-color: #b39797;
     color: #fff;
@@ -217,16 +214,25 @@ article footer button {
     border-radius: 5px;
     cursor: pointer;
 }
-
-/* Flechas de navegación */
 .flecha {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.5);
     border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     font-size: 20px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.flecha:hover {
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .izquierda {
