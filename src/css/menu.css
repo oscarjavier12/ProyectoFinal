@@ -1,4 +1,11 @@
+.marca {
+    text-align: center;
+    padding: 1%;
+}
 
+.imagen{
+    width: 40%;
+}
 /* Main navigation */
 .main-menu {
     clear: both;
