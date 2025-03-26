@@ -1,128 +1,133 @@
-/* From Uiverse.io by yashasvi9199 */
-.form {
-    
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding-left: 2em;
-    padding-right: 2em;
-    padding-bottom: 0.4em;
-    background-color: #171717;
-    border-radius: 25px;
-    transition: 0.4s ease-in-out;
+body {
+    background-color: #000000;
+    background-image: url('https://previews.123rf.com/images/prometeus/prometeus2012/prometeus201200972/161323411-proyecto-de-arte-corporal-retrato-de-una-bella-modelo-de-moda-con-piel-pintada-de-negro-y.jpg');
+    background-size: cover; /* Para que la imagen cubra todo el fondo */
+    background-repeat: no-repeat; /* Para evitar que la imagen se repita */
+    background-attachment: fixed; 
 }
 
-.card {
-    width: 21.5%;
-    background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
-    border-radius: 22px;
-    transition: all 0.3s;
-    
+.container {
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 400px;
+    max-width: 100%;
 }
 
-.card2 {
-    border-radius: 0;
-    transition: all 0.2s;
-}
-
-.card2:hover {
-    transform: scale(0.98);
-    border-radius: 20px;
-}
-
-.card:hover {
-    box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
-}
-
-#heading {
+.header {
+    background-color: #3498db;
+    padding: 20px 0;
     text-align: center;
-    margin: 2em;
-    color: rgb(255, 255, 255);
-    font-size: 1.2em;
 }
 
-.field {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    border-radius: 25px;
-    padding: 0.6em;
-    border: none;
-    outline: none;
+.header h2 {
     color: white;
-    background-color: #171717;
-    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+    margin: 0;
 }
 
-.input-icon {
-    height: 1.3em;
-    width: 1.3em;
-    fill: white;
+.forms-container {
+    padding: 20px;
+    
 }
 
-.input-field {
-    background: none;
-    border: none;
-    outline: none;
+.form-tab {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tab {
+    background-color: #f1f1f1;
+    color: #333;
+    cursor: pointer;
+    flex: 1;
+    padding: 15px;
+    text-align: center;
+}
+
+.tab.active {
+    background-color: #3498db;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
     width: 100%;
-    color: #d3d3d3;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-.form .btn {
+.form-group input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.checkbox-group {
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-    margin-top: 2.5em;
+    align-items: flex-start;
+    margin-top: 15px;
 }
 
-.button1 {
-    padding: 0.5em;
-    padding-left: 1.1em;
-    padding-right: 1.1em;
-    border-radius: 5px;
-    margin-right: 0.5em;
+.checkbox-group input {
+    margin-right: 10px;
+    margin-top: 3px;
+    width: auto;
+}
+
+.checkbox-group label {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.4;
+}
+
+.checkbox-group a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.checkbox-group a:hover {
+    text-decoration: underline;
+}
+
+.form-error {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.btn {
+    background-color: #3498db;
     border: none;
-    outline: none;
-    transition: 0.4s ease-in-out;
-    background-color: #252525;
-    color: white;
-}
-
-.button1:hover {
-    background-color: black;
-    color: white;
-}
-
-.button2 {
-    padding: 0.5em;
-    padding-left: 2.3em;
-    padding-right: 2.3em;
     border-radius: 5px;
-    border: none;
-    outline: none;
-    transition: 0.4s ease-in-out;
-    background-color: #252525;
     color: white;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
 }
 
-.button2:hover {
-    background-color: black;
-    color: white;
+.btn:hover {
+    background-color: #2980b9;
 }
 
-.button3 {
-    margin-bottom: 3em;
-    padding: 0.5em;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    transition: 0.4s ease-in-out;
-    background-color: #252525;
-    color: white;
+.form-container {
+    display: none;
 }
 
-.button3:hover {
-    background-color: red;
-    color: white;
+.form-container.active {
+    display: block;
 }

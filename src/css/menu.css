@@ -1,3 +1,4 @@
+
 .marca {
     text-align: center;
     padding: 1%;
@@ -7,6 +8,11 @@
     width: 40%;
 }
 /* Main navigation */
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .main-menu {
     clear: both;
     width: 100%;
