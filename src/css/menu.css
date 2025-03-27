@@ -1,18 +1,32 @@
+body {
+    background-color: #000000;
+    color: #f0dfc8;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Header and branding */
+header {
+    padding: 20px;
+}
 
 .marca {
     text-align: center;
     padding: 1%;
 }
 
-.imagen{
+.imagen {
     width: 11px;
 }
+
 /* Main navigation */
 .main {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .main-menu {
     clear: both;
     width: 100%;
