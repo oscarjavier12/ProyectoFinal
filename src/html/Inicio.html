@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/src/css/menu.css">
     <link rel="stylesheet" href="/src/css/registro.css">
-    
+
     <title>Document</title>
-    
+
 </head>
 
 <body>
     <header>
         <div class="marca">
-            <img class="imagen" src="/src/resources/EHMarca.png" alt="Marca EH" >
+            <img class="imagen" src="/src/resources/EHMarca.png" alt="Marca EH">
         </div>
         <nav class="main-menu">
             <ul>
@@ -31,94 +31,106 @@
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <div class="header">
-            <h2>¡Bienvenido!</h2>
+    <div class="formulario">
+        <div class="container">
+            <div class="header">
+                <h2>¡Bienvenido!</h2>
+            </div>
+
+            <div class="forms-container">
+                <div class="form-tab">
+                    <div class="tab active" id="loginTab">Iniciar Sesión</div>
+                    <div class="tab" id="registerTab">Registrarse</div>
+                </div>
+
+                <!-- Formulario de Inicio de Sesión -->
+                <div class="form-container active" id="loginForm">
+                    <form id="login">
+                        <div class="form-group">
+                            <label for="loginEmail">Correo Electrónico</label>
+                            <input type="email" id="loginEmail" placeholder="Tu correo electrónico">
+                            <div class="form-error" id="loginEmailError">Por favor ingresa un correo válido</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="loginPassword">Contraseña</label>
+                            <input type="password" id="loginPassword" placeholder="Tu contraseña">
+                            <div class="form-error" id="loginPasswordError">La contraseña debe tener al menos 6
+                                caracteres</div>
+                        </div>
+
+                        <button class="btn" type="submit">Iniciar Sesión</button>
+                    </form>
+                </div>
+
+                <!-- Formulario de Registro -->
+                <div class="form-container" id="registerForm">
+                    <form id="register">
+                        <div class="form-group">
+                            <label for="registerName">Nombre Completo</label>
+                            <input type="text" id="registerName" placeholder="Tu nombre completo">
+                            <div class="form-error" id="registerNameError">Por favor ingresa tu nombre</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerEmail">Correo Electrónico</label>
+                            <input type="email" id="registerEmail" placeholder="Tu correo electrónico">
+                            <div class="form-error" id="registerEmailError">Por favor ingresa un correo válido</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerPassword">Contraseña</label>
+                            <input type="password" id="registerPassword" placeholder="Tu contraseña">
+                            <div class="form-error" id="registerPasswordError">La contraseña debe tener al menos 6
+                                caracteres</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registerConfirmPassword">Confirmar Contraseña</label>
+                            <input type="password" id="registerConfirmPassword" placeholder="Confirma tu contraseña">
+                            <div class="form-error" id="registerConfirmPasswordError">Las contraseñas no coinciden</div>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">He leído y acepto los <a href="#" id="showTerms">Términos y
+                                    Condiciones</a> del servicio</label>
+                        </div>
+                        <div class="form-error" id="termsError">Debes aceptar los términos y condiciones para continuar
+                        </div>
+
+                        <button class="btn" type="submit">Registrarse</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        
-        <div class="forms-container">
-            <div class="form-tab">
-                <div class="tab active" id="loginTab">Iniciar Sesión</div>
-                <div class="tab" id="registerTab">Registrarse</div>
-            </div>
-            
-            <!-- Formulario de Inicio de Sesión -->
-            <div class="form-container active" id="loginForm">
-                <form id="login">
-                    <div class="form-group">
-                        <label for="loginEmail">Correo Electrónico</label>
-                        <input type="email" id="loginEmail" placeholder="Tu correo electrónico">
-                        <div class="form-error" id="loginEmailError">Por favor ingresa un correo válido</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="loginPassword">Contraseña</label>
-                        <input type="password" id="loginPassword" placeholder="Tu contraseña">
-                        <div class="form-error" id="loginPasswordError">La contraseña debe tener al menos 6 caracteres</div>
-                    </div>
-                    
-                    <button class="btn" type="submit">Iniciar Sesión</button>
-                </form>
-            </div>
-            
-            <!-- Formulario de Registro -->
-            <div class="form-container" id="registerForm">
-                <form id="register">
-                    <div class="form-group">
-                        <label for="registerName">Nombre Completo</label>
-                        <input type="text" id="registerName" placeholder="Tu nombre completo">
-                        <div class="form-error" id="registerNameError">Por favor ingresa tu nombre</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="registerEmail">Correo Electrónico</label>
-                        <input type="email" id="registerEmail" placeholder="Tu correo electrónico">
-                        <div class="form-error" id="registerEmailError">Por favor ingresa un correo válido</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="registerPassword">Contraseña</label>
-                        <input type="password" id="registerPassword" placeholder="Tu contraseña">
-                        <div class="form-error" id="registerPasswordError">La contraseña debe tener al menos 6 caracteres</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="registerConfirmPassword">Confirmar Contraseña</label>
-                        <input type="password" id="registerConfirmPassword" placeholder="Confirma tu contraseña">
-                        <div class="form-error" id="registerConfirmPasswordError">Las contraseñas no coinciden</div>
-                    </div>
-                    
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="terms" required>
-                        <label for="terms">He leído y acepto los <a href="#" id="showTerms">Términos y Condiciones</a> del servicio</label>
-                    </div>
-                    <div class="form-error" id="termsError">Debes aceptar los términos y condiciones para continuar</div>
-                    
-                    <button class="btn" type="submit">Registrarse</button>
-                </form>
+
+        <!-- Ventana modal para los términos y condiciones -->
+        <div id="termsModal"
+            style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 1000;">
+            <div
+                style="background-color: white; width: 80%; max-width: 600px; margin: 50px auto; padding: 20px; border-radius: 10px; max-height: 80vh; overflow-y: auto;">
+                <h2 style="text-align: center; margin-bottom: 20px;">Términos y Condiciones</h2>
+                <div style="margin-bottom: 20px;">
+                    <p>Este es un ejemplo de términos y condiciones. En una aplicación real, este texto debería ser
+                        redactado por un profesional legal.</p>
+                    <p style="margin-top: 10px;">Al utilizar nuestro servicio, usted acepta los siguientes términos:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Toda la información proporcionada debe ser precisa y verdadera.</li>
+                        <li>Usted es responsable de mantener la confidencialidad de su cuenta.</li>
+                        <li>No utilizamos sus datos personales para fines distintos a los especificados en nuestra
+                            política de privacidad.</li>
+                        <li>Nos reservamos el derecho de suspender cuentas que violen nuestras políticas.</li>
+                        <li>El contenido publicado a través de nuestro servicio debe respetar las leyes aplicables.</li>
+                    </ul>
+                    <p style="margin-top: 10px;">Para obtener más información, contacte a nuestro equipo de soporte.</p>
+                </div>
+                <button class="btn" id="closeTerms"
+                    style="background-color: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; display: block; margin: 0 auto;">Cerrar</button>
             </div>
         </div>
     </div>
-    
-    <!-- Ventana modal para los términos y condiciones -->
-    <div id="termsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 1000;">
-        <div style="background-color: white; width: 80%; max-width: 600px; margin: 50px auto; padding: 20px; border-radius: 10px; max-height: 80vh; overflow-y: auto;">
-            <h2 style="text-align: center; margin-bottom: 20px;">Términos y Condiciones</h2>
-            <div style="margin-bottom: 20px;">
-                <p>Este es un ejemplo de términos y condiciones. En una aplicación real, este texto debería ser redactado por un profesional legal.</p>
-                <p style="margin-top: 10px;">Al utilizar nuestro servicio, usted acepta los siguientes términos:</p>
-                <ul style="margin-left: 20px; margin-top: 10px;">
-                    <li>Toda la información proporcionada debe ser precisa y verdadera.</li>
-                    <li>Usted es responsable de mantener la confidencialidad de su cuenta.</li>
-                    <li>No utilizamos sus datos personales para fines distintos a los especificados en nuestra política de privacidad.</li>
-                    <li>Nos reservamos el derecho de suspender cuentas que violen nuestras políticas.</li>
-                    <li>El contenido publicado a través de nuestro servicio debe respetar las leyes aplicables.</li>
-                </ul>
-                <p style="margin-top: 10px;">Para obtener más información, contacte a nuestro equipo de soporte.</p>
-            </div>
-            <button class="btn" id="closeTerms" style="background-color: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; display: block; margin: 0 auto;">Cerrar</button>
-        </div>
-    </div>
+    <script src="../js/sesion.js"></script>
 </body>
 
 </html>
