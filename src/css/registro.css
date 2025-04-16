@@ -9,6 +9,7 @@ body {
 
 .formulario {
     place-items: center;
+    align-items: center;
 }
 
 .container {
