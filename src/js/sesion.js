@@ -1,3 +1,5 @@
+
+
 // Cambiar entre formularios
 const loginTab = document.getElementById('loginTab');
 const registerTab = document.getElementById('registerTab');
@@ -43,14 +45,14 @@ window.addEventListener('click', (e) => {
 const login = document.getElementById('login');
 login.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     const email = document.getElementById('loginEmail');
     const password = document.getElementById('loginPassword');
     const emailError = document.getElementById('loginEmailError');
     const passwordError = document.getElementById('loginPasswordError');
-    
+
     let isValid = true;
-    
+
     // Validar email
     if (!validateEmail(email.value)) {
         emailError.style.display = 'block';
@@ -58,7 +60,7 @@ login.addEventListener('submit', (e) => {
     } else {
         emailError.style.display = 'none';
     }
-    
+
     // Validar contraseña
     if (password.value.length < 6) {
         passwordError.style.display = 'block';
@@ -66,12 +68,14 @@ login.addEventListener('submit', (e) => {
     } else {
         passwordError.style.display = 'none';
     }
-    
+
     // Si todo es válido, enviar formulario
     if (isValid) {
         // Aquí puedes manejar el inicio de sesión (por ejemplo, con una API)
         alert('Inicio de sesión exitoso!');
         // En un caso real, aquí harías la petición al servidor
+        sessionStorage.setItem('isLoggedIn', 'true');
+        window.location.href = "Natural.html";
     }
 });
 
@@ -79,21 +83,21 @@ login.addEventListener('submit', (e) => {
 const register = document.getElementById('register');
 register.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     const name = document.getElementById('registerName');
     const email = document.getElementById('registerEmail');
     const password = document.getElementById('registerPassword');
     const confirmPassword = document.getElementById('registerConfirmPassword');
     const terms = document.getElementById('terms');
-    
+
     const nameError = document.getElementById('registerNameError');
     const emailError = document.getElementById('registerEmailError');
     const passwordError = document.getElementById('registerPasswordError');
     const confirmError = document.getElementById('registerConfirmPasswordError');
     const termsError = document.getElementById('termsError');
-    
+
     let isValid = true;
-    
+
     // Validar nombre
     if (name.value.trim() === '') {
         nameError.style.display = 'block';
@@ -101,7 +105,7 @@ register.addEventListener('submit', (e) => {
     } else {
         nameError.style.display = 'none';
     }
-    
+
     // Validar email
     if (!validateEmail(email.value)) {
         emailError.style.display = 'block';
@@ -109,7 +113,7 @@ register.addEventListener('submit', (e) => {
     } else {
         emailError.style.display = 'none';
     }
-    
+
     // Validar contraseña
     if (password.value.length < 6) {
         passwordError.style.display = 'block';
@@ -117,7 +121,7 @@ register.addEventListener('submit', (e) => {
     } else {
         passwordError.style.display = 'none';
     }
-    
+
     // Validar confirmación de contraseña
     if (password.value !== confirmPassword.value) {
         confirmError.style.display = 'block';
@@ -125,7 +129,7 @@ register.addEventListener('submit', (e) => {
     } else {
         confirmError.style.display = 'none';
     }
-    
+
     // Validar aceptación de términos
     if (!terms.checked) {
         termsError.style.display = 'block';
@@ -133,12 +137,10 @@ register.addEventListener('submit', (e) => {
     } else {
         termsError.style.display = 'none';
     }
-    
+
     // Si todo es válido, enviar formulario
     if (isValid) {
-        // Aquí puedes manejar el registro (por ejemplo, con una API)
-        alert('Registro exitoso!');
-        // En un caso real, aquí harías la petición al servidor
+        
     }
 });
 
@@ -147,3 +149,5 @@ function validateEmail(email) {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
+
+
