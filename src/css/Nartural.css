@@ -1,5 +1,3 @@
-/* Main content sections */
-
 
 .section-header {
     padding: 25px 30px;
@@ -44,7 +42,7 @@
     padding-bottom: 40px;
 }
 
-.container {
+.contenido {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
