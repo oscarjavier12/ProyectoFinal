@@ -1,6 +1,6 @@
 body {
-    background-color: #000000;
-    color: #f0dfc8;
+    background-color: #f0dfc8;
+    color: #000000;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -9,6 +9,8 @@ body {
 /* Header and branding */
 header {
     padding: 20px;
+    background-color: #000000;
+    color: #000000dc;
 }
 
 .marca {
