@@ -21,4 +21,3 @@ flechaDerecha.addEventListener('click', () => {
     elementos.style.transform = `translateX(-${posicion}px)`;
 
 });
-
