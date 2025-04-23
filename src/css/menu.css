@@ -30,7 +30,7 @@ main {
 }
 
 .imagen {
-    width: 160px;
+    width: 60%;
     max-height: 90px;
     transition: all 0.3s ease;
     object-fit: contain;
