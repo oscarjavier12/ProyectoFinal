@@ -3,48 +3,62 @@
     --secondary-color: #588157;
     --accent-color: #a3b18a;
     --light-color: #dad7cd;
-    --text-dark: #344e41;
+    --text-dark: #000000;
     --text-light: #f8f9fa;
     --transition: all 0.3s ease;
-    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --box-shadow: 0 5px 15px rgba(54, 44, 2, 0.562);
     --border-radius: 12px;
 }
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(218, 215, 205, 0.8) 100%),
-        url('../resources/EHLogo.png') center/cover no-repeat;
+    background: url('https://img.freepik.com/free-photo/white-foam-background_23-2151706106.jpg?t=st=1745455863~exp=1745459463~hmac=418a80add711ac620de7a89130a02c9bc663874d843b8dd15585422c3063fe42&w=1380')center/cover no-repeat;
     padding: 100px 0;
     margin-bottom: 3rem;
     position: relative;
     text-align: center;
     border-radius: var(--border-radius);
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(144, 153, 146, 0.6);
 }
 
 .hero-title {
     font-size: 3rem;
-    color: var(--primary-color);
+    color: white;
     margin-bottom: 1rem;
     font-weight: 700;
+    position: relative;
 }
 
 .hero-subtitle {
     font-size: 1.2rem;
-    color: var(--text-dark);
+    color: white;
     max-width: 600px;
     margin: 0 auto 2rem;
+    position: relative;
 }
 
 .scroll-down-btn {
     display: inline-block;
-    color: var(--primary-color);
+    color: white;
     font-size: 1.5rem;
     animation: bounce 2s infinite;
     transition: var(--transition);
+    position: relative;
 }
 
 .scroll-down-btn:hover {
-    color: var(--secondary-color);
+    color: var(--light-color);
 }
 
 @keyframes bounce {
@@ -66,9 +80,11 @@
     }
 }
 
-/* Services Section */
+/* Servicios*/
 .services-section {
     padding: 60px 0;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .service-card {
@@ -95,7 +111,8 @@
 }
 
 .service-image img {
-    width: 50%;
+    width: 100%;
+    max-width: 350px;
     height: auto;
     border-radius: calc(var(--border-radius) - 5px);
     object-fit: cover;
@@ -108,7 +125,7 @@
 
 .service-content {
     flex: 1;
-    padding: 40px;
+    padding: 30px;
     position: relative;
 }
 
@@ -204,7 +221,7 @@
     opacity: 0.9;
 }
 
-/* Testimonials Section */
+/*Puntuaciones */
 .testimonials-section {
     padding: 80px 0;
     background-color: var(--light-color);
@@ -366,7 +383,7 @@
 .cta-section {
     padding: 80px 0;
     text-align: center;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: var(--primary-color);
     color: white;
 }
 
@@ -600,32 +617,6 @@
 }
 
 @media (max-width: 768px) {
-    .main-menu {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 80px);
-        background-color: var(--primary-color);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: var(--transition);
-        z-index: 999;
-    }
-
-    .main-menu.active {
-        left: 0;
-    }
-
-    .main-menu ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .mobile-menu-btn {
-        display: block;
-    }
 
     .hero-title {
         font-size: 2rem;
