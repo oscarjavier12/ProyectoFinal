@@ -1,0 +1,17 @@
+.banner img {
+    width: 100%;
+    height: 60vh;
+    padding-bottom: 20px;
+}
+.carousel-item img {
+    margin: 0 auto;
+    width: 80%;
+    height: 65vh;
+}
+
+.carousel-indicators>button {
+    width: 7px !important;
+    height: 7px !important;
+    border-radius: 50%;
+    border: 0;
+}

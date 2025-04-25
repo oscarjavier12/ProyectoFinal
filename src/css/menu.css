@@ -12,6 +12,7 @@ body {
 main {
     padding-top: 10px;
     margin: 0 auto;
+    animation: fadeIn 0.5s ease forwards;
 }
 
 /* Header and Logo Styling */ 
@@ -154,8 +155,4 @@ main {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-main {
-    animation: fadeIn 0.5s ease forwards;
 }
