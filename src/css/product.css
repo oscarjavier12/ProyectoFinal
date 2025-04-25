@@ -1,169 +1,399 @@
-/* Estilos generales */
+/* Variables */
+:root {
+    --primary-color: #543A14;
+    --primary-dark: #AF8260;
+    --white: #fff;
+    --text-color: #333;
+    --text-light: #000000;
+    --text-lighter: #999999;
+    --gray-medium: #ccc;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --secondary-color: #ff6b6b;
+}
 
-.main-header {
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Hero Section */
+.eco-hero {
     text-align: center;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 3rem 5%;
+    background: url('https://img.freepik.com/free-photo/horizontal-banner-cosmetic-product-with-jade-roller-gua-sha_23-2149446528.jpg?t=st=1745597685~exp=1745601285~hmac=e7ff3d70c808e4308d433aacf35ab34a2c8bea551f222dd23dc1020f4e1f63fa&w=1380') center/cover no-repeat;
+    animation: fadeIn 1s ease;
+    position: relative;
+    isolation: isolate;
 }
 
-.main-header h1 {
-    color: #4a8f29;
-    margin-bottom: 20px;
+.eco-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(183, 180, 180, 0.3);
+    z-index: -1;
 }
 
-/* Buscador y filtros */
-.search-filter {
+.eco-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.eco-hero p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    animation: fadeIn 1s ease 0.3s both;
+}
+
+/* Search Section */
+.eco-search-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 5%;
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
+    justify-content: space-between;
+    gap: 1rem;
     flex-wrap: wrap;
 }
 
-.search-filter input {
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
+.eco-search-box {
+    flex: 2;
     min-width: 300px;
-}
-
-.search-filter select {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-/* Sección de marcas */
-.brand-section {
-    max-width: 1200px;
-    margin: 0 auto 50px;
-    padding: 0 20px;
-}
-
-.brand-section h2 {
-    color: #4a8f29;
-    margin-bottom: 10px;
-}
-
-.brand-section p {
-    color: #666;
-    margin-bottom: 20px;
-}
-
-/* Contenedor de scroll horizontal */
-.container {
-    display: flex;
-    width: 100%;
-    overflow-x: hidden;
     position: relative;
-    padding: 10px 0;
+    display: flex;
 }
 
-article {
-    flex: 0 0 300px;
-    margin-right: 20px;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 15px;
-    box-sizing: border-box;
-    background-color: #fff;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-article:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.hidden {
-    display: none;
-}
-
-article img {
+.eco-search-input {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 15px;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--gray-medium);
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: var(--transition);
+    padding-right: 45px;
 }
 
-article h3 {
-    margin: 0 0 10px;
-    font-size: 16px;
-    min-height: 40px;
+.eco-search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(74, 143, 41, 0.2);
 }
 
-.price {
-    font-weight: bold;
-    color: #4a8f29;
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-.add-to-cart {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    background-color: #4a8f29;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.add-to-cart:hover {
-    background-color: #3a7a19;
-}
-
-/* Botones de scroll */
-.scroll-button {
+.eco-search-submit {
     position: absolute;
+    right: 5px;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    background: var(--primary-color);
+    color: var(--white);
     border: none;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 1;
-    font-size: 18px;
+    transition: var(--transition);
+}
+
+.eco-search-submit:hover {
+    background: var(--primary-dark);
+}
+
+.eco-filter-box {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.eco-category-filter {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--gray-medium);
+    border-radius: 30px;
+    font-size: 1rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    transition: var(--transition);
+}
+
+.eco-category-filter:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(74, 143, 41, 0.2);
+}
+
+/* Main content */
+.eco-main {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 5%;
+}
+
+.eco-brand-section {
+    margin-bottom: 4rem;
+}
+
+.eco-brand-header {
     display: flex;
     align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.eco-brand-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+}
+
+.eco-brand-section h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.eco-brand-section p {
+    color: var(--text-light);
+    max-width: 600px;
+}
+
+.eco-products-container {
+    position: relative;
+    margin: 0 -10px;
+}
+
+.eco-products-track {
+    display: flex;
+    gap: 1.5rem;
+    padding: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.eco-products-track::-webkit-scrollbar {
+    display: none;
+}
+
+.eco-scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--white);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    z-index: 1;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    opacity: 0.8;
+    transition: var(--transition);
 }
 
-.scroll-button:hover {
-    background-color: rgba(0, 0, 0, 0.7);
+.eco-scroll-btn:hover {
+    opacity: 1;
+    background: var(--primary-color);
+    color: var(--white);
 }
 
-.scroll-left {
+.eco-scroll-left {
+    left: -20px;
+}
+
+.eco-scroll-right {
+    right: -20px;
+}
+
+.eco-product-card {
+    flex: 0 0 280px;
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+}
+
+.eco-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.eco-product-badge {
+    position: absolute;
+    top: 10px;
     left: 10px;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    z-index: 1;
 }
 
-.scroll-right {
-    right: 10px;
+.eco-product-img-container {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.eco-product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.eco-product-card:hover .eco-product-img {
+    transform: scale(1.05);
+}
+
+.eco-product-info {
+    padding: 1.2rem;
+}
+
+.eco-product-info h3 {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    height: 40px;
+    overflow: hidden;
+    display: -webkit-box;
+    --webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.eco-product-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.eco-product-price {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.eco-product-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    color: #ffc107;
+    font-size: 0.8rem;
+}
+
+.eco-product-rating span {
+    color: var(--text-lighter);
+    margin-left: 0.3rem;
+}
+
+.eco-add-to-cart {
+    width: 100%;
+    padding: 0.7rem;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.eco-add-to-cart:hover {
+    background: var(--primary-dark);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .search-filter {
+    .eco-hero h1 {
+        font-size: 2rem;
+    }
+
+    .eco-hero p {
+        font-size: 1rem;
+    }
+
+    .eco-search-container {
         flex-direction: column;
-        align-items: center;
     }
 
-    .search-filter input,
-    .search-filter select {
+    .eco-search-box,
+    .eco-filter-box {
         width: 100%;
-        max-width: 300px;
     }
 
-    article {
-        flex: 0 0 280px;
+    .eco-brand-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .eco-brand-logo {
+        margin-bottom: 1rem;
+    }
+
+    .eco-scroll-left {
+        left: 10px;
+    }
+
+    .eco-scroll-right {
+        right: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .eco-product-card {
+        flex: 0 0 260px;
     }
 }

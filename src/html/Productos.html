@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Productos Naturales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -37,110 +43,277 @@
             </ul>
         </nav>
     </header>
-    <header class="main-header">
-        <h1>Nuestro catálogo de productos naturales</h1>
-        <div class="search-filter">
-            <input type="text" placeholder="Buscar productos...">
-            <select>
-                <option>Todas las categorías</option>
-                <option>Cuidado facial</option>
-                <option>Cuidado corporal</option>
-                <option>Maquillaje</option>
+
+    <div class="eco-hero">
+        <h1>Nuestro Catálogo de Productos Naturales</h1>
+        <p>Descubre la belleza de lo natural</p>
+    </div>
+
+    <div class="eco-search-container">
+        <div class="eco-search-box">
+            <input type="text" placeholder="Buscar productos..." class="eco-search-input">
+            <button class="eco-search-submit"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="eco-filter-box">
+            <select class="eco-category-filter">
+                <option value="">Todas las categorías</option>
+                <option value="facial">Cuidado facial</option>
+                <option value="corporal">Cuidado corporal</option>
+                <option value="maquillaje">Maquillaje</option>
+                <option value="suplementos">Perfume</option>
             </select>
         </div>
-    </header>
+    </div>
 
-    <main>
-        <section class="brand-section">
-            <h2>AHAL Bio Cosmética</h2>
-            <p>Maquillaje orgánico libre de crueldad, hipoalergénico y sustentable. Productos de cuidado personal.
-                Consciencia, salud y belleza.</p>
+    <main class="eco-main">
+        <section class="eco-brand-section">
+            <div class="eco-brand-header">
+                <img src="https://cdn.shopify.com/s/files/1/0679/3053/collections/maquillaje-clean-makeup-271950.jpg?v=1661889219"
+                    alt="AHAL Bio Cosmética" class="eco-brand-logo">
+                <div>
+                    <h2>AHAL Bio Cosmética</h2>
+                    <p>Maquillaje orgánico libre de crueldad, hipoalergénico y sustentable. Productos de cuidado
+                        personal. Consciencia, salud y belleza.</p>
+                </div>
+            </div>
 
-            <div class="container">
-                <button class="scroll-button scroll-left">&lt;</button>
+            <div class="eco-products-container">
+                <button class="eco-scroll-btn eco-scroll-left"><i class="fas fa-chevron-left"></i></button>
 
-                <article>
-                    <img src="" alt="Summer Essentials Kit">
-                    <h3>SUMMER ESSENTIALS KIT</h3>
-                    <p class="price">$500 MXN</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
-                </article>
-
-                <article>
-                    <img src="" alt="Polvo Traslúcido">
-                    <h3>POLVO TRASLÚCIDO</h3>
-                    <p class="price">$790 MXN</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
-                </article>
-
-                <article>
-                    <img src="" alt="Suero Corporal">
-                    <h3>SUERO CORPORAL CON ACEITE DE MONGONGO</h3>
-                    <p class="price">$500 MXN</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
-                </article>
-
-                <article>
-                    <img src="" alt="Protector Solar">
-                    <h3>PROTECTOR SOLAR</h3>
-                    <p class="price">$500 MXN</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
-                </article>
-
-                <article class="hidden">
-                    <img src="" alt="Jabón Natural">
-                    <h3>JABÓN NATURAL</h3>
-                    <p class="price">$180 MXN</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
-                </article>
-
-                <button class="scroll-button scroll-right">&gt;</button>
+                <div class="eco-products-track">
+                    <!-- 1 -->
+                    <article class="eco-product-card">
+                        <div class="eco-product-badge">Nuevo</div>
+                        <div class="eco-product-img-container">
+                            <img src="https://www.ahal.mx/cdn/shop/files/summer-essentials-kit-edicion-limitada-411271.jpg?v=1719656676&width=990"
+                                alt="Summer Essentials Kit" class="eco-product-img">
+                        </div>
+                        <div class="eco-product-info">
+                            <h3>SUMMER ESSENTIALS KIT</h3>
+                            <div class="eco-product-meta">
+                                <span class="eco-product-price">$500 MXN</span>
+                                <div class="eco-product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(11)</span>
+                                </div>
+                            </div>
+                            <button class="eco-add-to-cart"><i class="fas fa-cart-plus"></i> Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <!-- 2 -->
+                    <article class="eco-product-card">
+                        <div class="eco-product-img-container">
+                            <img src="https://www.ahal.mx/cdn/shop/files/Powder-2-PRODUCTO.jpg?v=1687805127&width=990"
+                                alt="Summer Essentials Kit" class="eco-product-img">
+                        </div>
+                        <div class="eco-product-info">
+                            <h3>POLVO TRASLÚCIDO</h3>
+                            <div class="eco-product-meta">
+                                <span class="eco-product-price">$790 MXN</span>
+                                <div class="eco-product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(15)</span>
+                                </div>
+                            </div>
+                            <button class="eco-add-to-cart"><i class="fas fa-cart-plus"></i> Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <!-- 3 -->
+                    <article class="eco-product-card">
+                        <div class="eco-product-img-container">
+                            <img src="https://www.ahal.mx/cdn/shop/products/mongongo-body-oil-suero-corporal-con-aceite-de-mongongo-718484.jpg?v=1684275541&width=990"
+                                alt="Summer Essentials Kit" class="eco-product-img">
+                        </div>
+                        <div class="eco-product-info">
+                            <h3>SUERO CORPORAL CON ACEITE DE MONGONO</h3>
+                            <div class="eco-product-meta">
+                                <span class="eco-product-price">$680 MXN</span>
+                                <div class="eco-product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(8)</span>
+                                </div>
+                            </div>
+                            <button class="eco-add-to-cart"><i class="fas fa-cart-plus"></i> Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <!-- 4 -->
+                    <article class="eco-product-card">
+                        <div class="eco-product-img-container">
+                            <img src="https://www.ahal.mx/cdn/shop/products/sun-protection-protector-solar-767095.jpg?v=1684275545&width=990"
+                                alt="Summer Essentials Kit" class="eco-product-img">
+                        </div>
+                        <div class="eco-product-info">
+                            <h3>PROTECTOR SOLAR</h3>
+                            <div class="eco-product-meta">
+                                <span class="eco-product-price">$820 MXN</span>
+                                <div class="eco-product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(22)</span>
+                                </div>
+                            </div>
+                            <button class="eco-add-to-cart"><i class="fas fa-cart-plus"></i> Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <!-- 5 -->
+                    <article class="eco-product-card">
+                        <div class="eco-product-badge">Nuevo</div>
+                        <div class="eco-product-img-container">
+                            <img src="https://www.ahal.mx/cdn/shop/files/dunas-bronzer-multiusos-edicion-especial-277727.jpg?v=1718248154&width=990"
+                                alt="Summer Essentials Kit" class="eco-product-img">
+                        </div>
+                        <div class="eco-product-info">
+                            <h3>DUNAS BRONZER MULTIUSOS - EDICIÓN ESPECIAL</h3>
+                            <div class="eco-product-meta">
+                                <span class="eco-product-price">$690 MXN</span>
+                                <div class="eco-product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(37)</span>
+                                </div>
+                            </div>
+                            <button class="eco-add-to-cart"><i class="fas fa-cart-plus"></i> Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <!-- 6 -->
+                    <article class="eco-product-card">
+                        <div class="eco-product-badge">Nuevo</div>
+                        <div class="eco-product-img-container">
+                            <img src="https://www.ahal.mx/cdn/shop/products/3-pack-jabones-faciales-350295.jpg?v=1661889265&width=990"
+                                alt="Summer Essentials Kit" class="eco-product-img">
+                        </div>
+                        <div class="eco-product-info">
+                            <h3>3 PACK - JABONES FACIALES</h3>
+                            <div class="eco-product-meta">
+                                <span class="eco-product-price">$550 MXN</span>
+                                <div class="eco-product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(35)</span>
+                                </div>
+                            </div>
+                            <button class="eco-add-to-cart"><i class="fas fa-cart-plus"></i> Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <!-- 7 -->
+                    <article class="eco-product-card">
+                        <div class="eco-product-badge">Nuevo</div>
+                        <div class="eco-product-img-container">
+                            <img src="https://www.ahal.mx/cdn/shop/files/Lipbalm-rosa-2-PRODUCTO.jpg?v=1687802337&width=990"
+                                alt="Summer Essentials Kit" class="eco-product-img">
+                        </div>
+                        <div class="eco-product-info">
+                            <h3>LIP BALM</h3>
+                            <div class="eco-product-meta">
+                                <span class="eco-product-price">$280 MXN</span>
+                                <div class="eco-product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(16)</span>
+                                </div>
+                            </div>
+                            <button class="eco-add-to-cart"><i class="fas fa-cart-plus"></i> Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <!-- 8 -->
+                    <article class="eco-product-card">
+                        <div class="eco-product-img-container">
+                            <img src="https://www.ahal.mx/cdn/shop/products/tonic-mist-agua-tonica-con-tuna-y-cempasuchil-369540.jpg?v=1720215554&width=990"
+                                alt="Summer Essentials Kit" class="eco-product-img">
+                        </div>
+                        <div class="eco-product-info">
+                            <h3>AGUA TÓNICA CON TUNA Y CEMPASÚCHIL</h3>
+                            <div class="eco-product-meta">
+                                <span class="eco-product-price">$790 MXN</span>
+                                <div class="eco-product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(10)</span>
+                                </div>
+                            </div>
+                            <button class="eco-add-to-cart"><i class="fas fa-cart-plus"></i> Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <!-- 9 -->
+                    <article class="eco-product-card">
+                        <div class="eco-product-badge">Nuevo</div>
+                        <div class="eco-product-img-container">
+                            <img src="https://www.ahal.mx/cdn/shop/files/bugambilia-lipstick-478019.png?v=1738925694&width=990"
+                                alt="Summer Essentials Kit" class="eco-product-img">
+                        </div>
+                        <div class="eco-product-info">
+                            <h3>BUGAMBILIA LIPSTICIK</h3>
+                            <div class="eco-product-meta">
+                                <span class="eco-product-price">$390 MXN</span>
+                                <div class="eco-product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(12)</span>
+                                </div>
+                            </div>
+                            <button class="eco-add-to-cart"><i class="fas fa-cart-plus"></i> Agregar al carrito</button>
+                        </div>
+                    </article>
+                    <!-- 10 -->
+                    <article class="eco-product-card">
+                        <div class="eco-product-badge">Nuevo</div>
+                        <div class="eco-product-img-container">
+                            <img src="https://www.ahal.mx/cdn/shop/products/lash-mascara-mascara-de-pestanas-con-peptidos-de-amaranto-301770.jpg?v=1687883486&width=990"
+                                alt="Summer Essentials Kit" class="eco-product-img">
+                        </div>
+                        <div class="eco-product-info">
+                            <h3>MÁSCARA DE PESTAÑAS CON PÉPTIDOS DE AMARANTO</h3>
+                            <div class="eco-product-meta">
+                                <span class="eco-product-price">$560 MXN</span>
+                                <div class="eco-product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span>(6)</span>
+                                </div>
+                            </div>
+                            <button class="eco-add-to-cart"><i class="fas fa-cart-plus"></i> Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <button class="eco-scroll-btn eco-scroll-right"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
+        <!-- Segunda Marca -->
 
-        <section class="brand-section">
-            <h2>NATURAL SCENTS</h2>
-            <p>ofrece una oferta única y exclusiva de productos de cuidado personal y belleza para consentir y
-                consentirse.
-            </p>
-
-            <div class="container">
-                <button class="scroll-button scroll-left">&lt;</button>
-
-                <article>
-                    <img src="" alt="Jabón de Avena">
-                    <h3>JABÓN DE AVENA Y MIEL</h3>
-                    <p class="price">$120 MXN</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
-                </article>
-
-                <article>
-                    <img src="" alt="Shampoo Sólido">
-                    <h3>SHAMPOO SÓLIDO ROMERO</h3>
-                    <p class="price">$180 MXN</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
-                </article>
-
-                <article>
-                    <img src="" alt="Fragrancia Natural">
-                    <h3>Perfume Corporal True Love 240 ml
-                    </h3>
-                    <p class="price">$220 MXN</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
-                </article>
-
-                <article class="hidden">
-                    <img src="" alt="Crema Corporal">
-                    <h3>CREMA CORPORAL DE KARITÉ</h3>
-                    <p class="price">$250 MXN</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
-                </article>
-
-                <button class="scroll-button scroll-right">&gt;</button>
-            </div>
-        </section>
     </main>
-
     <script src="/src/js/producto.js"></script>
 </body>
 

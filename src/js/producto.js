@@ -1,96 +1,81 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Inicializar todos los contenedores de scroll
-    const containers = document.querySelectorAll('.container');
 
-    containers.forEach(container => {
-        const articles = container.querySelectorAll('article');
-        const scrollLeftButton = container.querySelector('.scroll-left');
-        const scrollRightButton = container.querySelector('.scroll-right');
-        let scrollAmount = 0;
-        const articleWidth = 320; // Ancho de cada artículo incluyendo margen
+    // Productos en el carrusel
+    const productContainers = document.querySelectorAll('.eco-products-container');
 
-        // Mostrar botones solo si hay elementos ocultos
+    productContainers.forEach(container => {
+        const track = container.querySelector('.eco-products-track');
+        const leftBtn = container.querySelector('.eco-scroll-left');
+        const rightBtn = container.querySelector('.eco-scroll-right');
+        const productCards = container.querySelectorAll('.eco-product-card');
+
+        if (!track || !leftBtn || !rightBtn || productCards.length === 0) return;
+
+        const cardWidth = productCards[0].offsetWidth + 24; // Including gap
+        let scrollPosition = 0;
+        const maxScroll = track.scrollWidth - container.offsetWidth;
+
+        // mostrar u ocultar botones de desplazamiento
         function updateButtons() {
-            const visibleArticles = Array.from(articles).filter(article =>
-                !article.classList.contains('hidden')
-            ).length;
-
-            scrollLeftButton.style.display = scrollAmount > 0 ? 'block' : 'none';
-            scrollRightButton.style.display =
-                scrollAmount < articles.length - Math.floor(container.offsetWidth / articleWidth) ? 'block' : 'none';
+            leftBtn.style.display = scrollPosition <= 0 ? 'none' : 'flex';
+            rightBtn.style.display = scrollPosition >= maxScroll ? 'none' : 'flex';
         }
 
-        // Scroll a la derecha
-        scrollRightButton?.addEventListener('click', () => {
-            const maxScroll = articles.length - Math.floor(container.offsetWidth / articleWidth);
-            if (scrollAmount < maxScroll) {
-                scrollAmount++;
-                container.style.transform = `translateX(-${scrollAmount * articleWidth}px)`;
-                updateButtons();
-            }
-        });
-
-        // Scroll a la izquierda
-        scrollLeftButton?.addEventListener('click', () => {
-            if (scrollAmount > 0) {
-                scrollAmount--;
-                container.style.transform = `translateX(-${scrollAmount * articleWidth}px)`;
-                updateButtons();
-            }
-        });
-
-        // Mostrar/ocultar artículos según el ancho del contenedor
-        function updateVisibleArticles() {
-            const containerWidth = container.offsetWidth;
-            const visibleCount = Math.floor(containerWidth / articleWidth);
-
-            articles.forEach((article, index) => {
-                if (index < visibleCount) {
-                    article.classList.remove('hidden');
-                } else {
-                    article.classList.add('hidden');
-                }
+        // Scroll left
+        leftBtn.addEventListener('click', () => {
+            scrollPosition -= cardWidth * 2;
+            if (scrollPosition < 0) scrollPosition = 0;
+            track.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
             });
+            setTimeout(updateButtons, 300);
+        });
 
+        // Scroll right
+        rightBtn.addEventListener('click', () => {
+            scrollPosition += cardWidth * 2;
+            if (scrollPosition > maxScroll) scrollPosition = maxScroll;
+            track.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+            setTimeout(updateButtons, 300);
+        });
+
+        // Initialize buttons
+        updateButtons();
+
+        // Handle track scroll
+        track.addEventListener('scroll', () => {
+            scrollPosition = track.scrollLeft;
             updateButtons();
-        }
-
-        // Actualizar al cargar y al cambiar el tamaño de la ventana
-        updateVisibleArticles();
-        window.addEventListener('resize', updateVisibleArticles);
-    });
-
-    // Funcionalidad del carrito
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            // Animación de confirmación
-            const originalText = this.textContent;
-            this.textContent = '✓ Agregado';
-            this.style.backgroundColor = '#4CAF50';
-
-            setTimeout(() => {
-                this.textContent = originalText;
-                this.style.backgroundColor = '#4a8f29';
-            }, 2000);
         });
     });
 
-    // Funcionalidad de búsqueda
-    const searchInput = document.querySelector('.search-filter input');
+    const searchInput = document.querySelector('.eco-search-input');
+    const searchSubmit = document.querySelector('.eco-search-submit');
+    const productCards = document.querySelectorAll('.eco-product-card');
 
-    searchInput?.addEventListener('input', function () {
-        const searchTerm = this.value.toLowerCase();
-        const allArticles = document.querySelectorAll('article');
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase();
 
-        allArticles.forEach(article => {
-            const productName = article.querySelector('h3').textContent.toLowerCase();
-            if (productName.includes(searchTerm)) {
-                article.style.display = 'block';
-            } else {
-                article.style.display = 'none';
-            }
+        productCards.forEach(card => {
+            const productName = card.querySelector('h3').textContent.toLowerCase();
+            card.style.display = productName.includes(searchTerm) ? 'block' : 'none';
         });
+    }
+
+    searchInput?.addEventListener('input', performSearch);
+    searchSubmit?.addEventListener('click', performSearch);
+
+    // filtrado por categoría
+    const selectedCategory = document.querySelector('.eco-category-select');
+    const categoryFilter = document.querySelector('.eco-category-filter');
+
+    categoryFilter?.addEventListener('change', function () {
+        const selectedCategory = this.value;
+        if (!selectedCategory) return;
+        alert(`Filtrando por categoría: ${this.options[this.selectedIndex].text}`);
     });
 });
