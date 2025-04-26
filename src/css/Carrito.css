@@ -1,0 +1,15 @@
+.admin-header {
+    background: linear-gradient(135deg, #67ac64, #67ac64b9);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+.admin-header img{
+    height: 100px;
+}
+.admin-header .admin-header-text {
+    margin-left: 20px;
+}
