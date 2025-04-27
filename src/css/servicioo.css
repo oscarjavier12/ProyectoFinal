@@ -114,7 +114,7 @@
 }
 
 .card-content h2 {
-    color: var(--primary);
+    color: var(--secondary);
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
     position: relative;
