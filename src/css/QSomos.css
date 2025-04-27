@@ -6,10 +6,22 @@
     background-size: cover;
     display: flex;
     align-items: center;
+    animation: fadeIn 1s ease;
     justify-content: center;
     text-align: center;
     color: white;
     margin-bottom: 50px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .hero-overlay {
@@ -29,6 +41,7 @@
 }
 
 .hero-content h1 {
+    animation: fadeIn 1s ease 0.3s both;
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 20px;
@@ -36,8 +49,12 @@
 }
 
 .hero-content p {
+    animation: fadeIn 1s ease 0.5s both;
     font-size: 1.5rem;
     font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    position: relative;
 }
 
 /* Misión, Visión y Videos */

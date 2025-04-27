@@ -1,20 +1,21 @@
 :root {
-    --primary-color: #40534C;
+    --primary-color: #B17457;
     --secondary-color: #d4b996;
-    --accent-color: #6D9886;
+    --accent-color: #F0BB78;
     --dark-color: #ffffff;
-    --light-color: #677D6A;
+    --light-color: #AF8260;
 }
 
 .contact-container {
     max-width: 1200px;
     margin: 40px auto;
-    background-color: #1A3636;
+    background-color: #543A14;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 .contact-header {
@@ -30,6 +31,7 @@
 }
 
 .logo-img {
+    animation: fadeIn 1s ease 0.3s both;
     max-width: 200px;
     height: auto;
     margin-bottom: 15px;
@@ -132,7 +134,8 @@
 }
 
 .contact-form {
-    background-color: #677D6A;
+    animation: fadeIn 1s ease 0.3s both;
+    background-color: #C69B7B;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -179,8 +182,19 @@
 }
 
 .invalid-feedback {
-    color: #ffffff64;
+    color: #630000;
     font-size: 0.9rem;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @media (max-width: 992px) {

@@ -71,16 +71,24 @@ img {
 }
 
 .eco-hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
     color: var(--primary-color);
+    animation: fadeIn 1s ease 0.3s both;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .eco-hero p {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: var(--text-light);
     animation: fadeIn 1s ease 0.3s both;
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    position: relative;
 }
+
 
 /* Search Section */
 .eco-search-container {

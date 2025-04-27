@@ -1,8 +1,8 @@
 :root {
-    --primary: #3a5a40;
-    --secondary: #588157;
-    --accent: #a3b18a;
-    --light: #dad7cd;
+    --primary: #AF8260;
+    --secondary: #8a9a5b;
+    --accent: #E8C999;
+    --light: #E6D5B8;
     --dark: #000000;
     --white: #f8f9fa;
     --transition: all 0.3s ease;
@@ -12,6 +12,7 @@
 
 /* Hero Section */
 .hero {
+    animation: fadeIn 1s ease;
     background: url('https://img.freepik.com/free-photo/white-foam-background_23-2151706106.jpg?t=st=1745455863~exp=1745459463~hmac=418a80add711ac620de7a89130a02c9bc663874d843b8dd15585422c3063fe42&w=1380') center/cover no-repeat;
     padding: 100px 0;
     margin-bottom: 3rem;
@@ -19,6 +20,7 @@
     text-align: center;
     border-radius: var(--radius);
     color: var(--white);
+    height: 60vh;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
@@ -33,19 +35,21 @@
 }
 
 .hero-title {
-    font-size: 3rem;
+    animation: fadeIn 1s ease 0.3s both;
+    font-size: 3.5rem;
     color: var(--white);
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     font-weight: 700;
     position: relative;
 }
 
 .hero-subtitle {
-    font-size: 1.2rem;
+    animation: fadeIn 1s ease 0.5s both;
+    font-size: 1.5rem;
     color: var(--white);
     max-width: 600px;
     margin: 0 auto 2rem;
-    position: relative;
 }
 
 /*Servicios*/
@@ -164,13 +168,13 @@
 }
 
 .btn-join {
-    background-color: var(--primary);
+    background-color: var(--secondary);
     color: var(--white);
 }
 
 .btn-create {
-    background-color: var(--accent);
-    color: var(--dark);
+    background-color: var(--secondary);
+    color: var(--white);
 }
 
 .btn-start {
@@ -179,7 +183,7 @@
 }
 
 .btn-recycle {
-    background-color: #8a9a5b;
+    background-color: var(--secondary);
     color: var(--white);
 }
 
@@ -498,7 +502,7 @@
 
 .contact i {
     margin-top: 3px;
-    color: var(--accent);
+    color: #FBF6E2;
 }
 
 .newsletter-form {
@@ -523,7 +527,7 @@
     padding: 12px;
     border: none;
     border-radius: 5px;
-    background-color: var(--accent);
+    background-color: #FBF6E2;
     color: var(--dark);
     font-weight: 600;
     cursor: pointer;
