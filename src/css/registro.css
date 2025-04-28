@@ -1,8 +1,9 @@
 body {
-    background-color: #f8f9fa;
+    background-image: url('../resources/imagenes/fondo.jpg');
     min-height: 100vh;
     display: flex;
     align-items: center;
+
 }
 
 .form-container {
@@ -28,10 +29,26 @@ body {
 .nav-tabs .nav-link.active {
     font-weight: bold;
 }
-.logo {
-    text-align: center;
+
+#cardHeader {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
 }
-.card img{
-    
-    width: 20%;
+
+.card img {
+    width: 10%;
+}
+
+.card h2 {
+    background-color: #335b27;
+}
+.card input {
+    background-color: #f0dfc8;
+}
+#loginTab{
+    background-color: #335b27;
+    color: white;
+}
+#registerTab{
+    background-color: #f0dfc8;
 }
