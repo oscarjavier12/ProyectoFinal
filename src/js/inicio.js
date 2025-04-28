@@ -33,6 +33,9 @@ menu[2].addEventListener("click", function () {
 menu[3].addEventListener("click", function () {
     cargarContenido("/src/html/Contacto.html");
 });
+menu[4].addEventListener("click", function () {
+    cargarContenido("/src/html/Servicios.html");
+});
 menu[5].addEventListener("click", function () {
     cargarContenido("/src/html/Carrito.html");
 });
