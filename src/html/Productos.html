@@ -13,12 +13,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/src/css/menu.css">
+    <link rel="stylesheet" type="text/css" href="/src/css/Nartural.css">
     <link rel="stylesheet" type="text/css" href="/src/css/product.css">
 </head>
 
 <body>
-    
+    <header>
+        <div class="marca">
+            <img class="imagen" src="/src/resources/EH.png" alt="Marca">
+        </div>
+        <nav class="main-menu">
+            <ul>
+                <li><a href="/src/html/Inicio.html">Inicio</a></li>
+                <li><a href="/src/html/Natural.html">Natural</a></li>
+                <li><a href="/src/html/QuienesSomos.html">¿Quiénes somos?</a></li>
+                <li><a href="/src/html/Servicios.html">Servicios</a></li>
+                <li><a href="/src/html/Contacto.html">Contáctanos</a></li>
+                <li><a href="/src/html/Productos.html">Productos</a></li>
+
+                <div class="botones">
+                    <button type="button" class="inicio" aria-label="Inicio">
+                        <!-- Add actual content or icon here -->
+                    </button>
+                </div>
+            </ul>
+        </nav>
+    </header>
 
     <div class="eco-hero">
         <h1>Nuestro Catálogo de Productos Naturales</h1>
@@ -1637,11 +1661,64 @@
             </div>
         </section>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-        
-    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col about">
+                    <img src="../resources/EHLogo.png" alt="Essence Harmony" class="footer-logo">
+                    <p>Essence Harmony es tu destino para productos de belleza natural y sostenible, creados con
+                        conciencia y
+                        respeto por el medio ambiente.</p>
+                    <div class="social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="inicio.html">Inicio</a></li>
+                        <li><a href="natural.html">Natural</a></li>
+                        <li><a href="QuienesSomos.html">Sobre Nosotros</a></li>
+                        <li><a href="servicios.html">Servicios</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col contact">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i>
+                            Av. Paseo de la Reforma 505,
+                            Col. Cuauhtémoc,
+                            Ciudad de México,
+                            México</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                        <li><i class="fas fa-envelope"></i> info@essenceharmony.com</li>
+                        <li><i class="fas fa-clock"></i> Lunes a Viernes: 9am - 6pm</li>
+                    </ul>
+                </div>
+                <div class="footer-col newsletter">
+                    <h3>Actualizaciones</h3>
+                    <p>Suscríbete para recibir ofertas exclusivas y consejos de belleza natural.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" required>
+                        <button type="submit">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Essence Harmony. Todos los derechos reservados.</p>
+                <div class="legal-links">
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Términos y Condiciones</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="/src/js/producto.js"></script>
 </body>
 
 </html>
