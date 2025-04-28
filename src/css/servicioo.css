@@ -408,8 +408,8 @@
 
 /* Footer*/
 .footer {
-    background-color: var(--dark);
-    color: var(--white);
+    background-color: black;
+    color: white;
     padding: 60px 0 0;
 }
 
@@ -443,17 +443,17 @@
     height: 40px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
-    color: var(--white);
-    transition: var(--transition);
+    color: white;
+    transition: all 0.3s ease;
 }
 
 .social a:hover {
-    background-color: var(--accent);
+    background-color: #E8C999;
     transform: translateY(-3px);
 }
 
 .footer-col h3 {
-    color: var(--white);
+    color: white;
     margin-bottom: 20px;
     font-size: 1.2rem;
     position: relative;
@@ -467,7 +467,7 @@
     left: 0;
     width: 40px;
     height: 2px;
-    background-color: var(--accent);
+    background-color: #E8C999;
 }
 
 .links ul {
@@ -481,11 +481,11 @@
 .links a {
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
 .links a:hover {
-    color: var(--white);
+    color: white;
     padding-left: 5px;
 }
 
@@ -516,7 +516,7 @@
     border: none;
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.1);
-    color: var(--white);
+    color: white;
 }
 
 .newsletter-form input::placeholder {
@@ -528,14 +528,14 @@
     border: none;
     border-radius: 5px;
     background-color: #FBF6E2;
-    color: var(--dark);
+    color: black;
     font-weight: 600;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
 .newsletter-form button:hover {
-    background-color: var(--white);
+    background-color: white;
 }
 
 .footer-bottom {
@@ -562,11 +562,11 @@
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     font-size: 0.9rem;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
 .legal-links a:hover {
-    color: var(--white);
+    color: white;
 }
 
 /* Responsive Design */
