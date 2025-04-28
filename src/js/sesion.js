@@ -49,6 +49,8 @@ login.addEventListener('submit', (e) => {
         sessionStorage.setItem('isLoggedIn', 'true');
         if (admin) {
             sessionStorage.setItem('isAdmin', 'true');
+        }else{
+            sessionStorage.setItem('isAdmin', 'false');
         }
 
         window.location.href = "index.html";
