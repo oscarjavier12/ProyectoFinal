@@ -21,7 +21,7 @@ body {
 
 .form-error {
     display: none;
-    color: #dc3545;
+    color: orange;
     font-size: 0.875rem;
     margin-top: 0.25rem;
 }
@@ -42,13 +42,20 @@ body {
 .card h2 {
     background-color: #335b27;
 }
+
 .card input {
     background-color: #f0dfc8;
 }
-#loginTab{
+
+#loginTab {
     background-color: #335b27;
     color: white;
 }
-#registerTab{
+
+#registerTab {
     background-color: #f0dfc8;
+    color: black;
+}
+#showTerms{
+    color: white;
 }
