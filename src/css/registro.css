@@ -34,6 +34,9 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
 }
+#cardHeader input {
+    background-color: #f0dfc8 ;
+}
 
 .card img {
     width: 10%;
@@ -43,9 +46,7 @@ body {
     background-color: #335b27;
 }
 
-.card input {
-    background-color: #f0dfc8;
-}
+
 
 #loginTab {
     background-color: #335b27;

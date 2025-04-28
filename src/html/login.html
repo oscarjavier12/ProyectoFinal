@@ -50,95 +50,97 @@
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="bi bi-envelope"></i></span>
                                             <input type="email" class="form-control" id="loginEmail"
-                                                placeholder="Tu correo electrónico" required>
+                                                placeholder="usuario1@gmail.com" required>
                                         </div>
                                         <div class="form-error" id="loginEmailError">Por favor ingresa un correo válido
                                         </div>
+                                        <div class="form-error" id="loginUserError">Usuario no registrado</div>
                                     </div>
-
-                                    <div class="mb-4">
-                                        <label for="loginPassword" class="form-label">Contraseña</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                                            <input type="password" class="form-control" id="loginPassword"
-                                                placeholder="Tu contraseña" required>
-                                        </div>
-                                        <div class="form-error" id="loginPasswordError">La contraseña debe tener al
-                                            menos 6 caracteres</div>
-                                    </div>
-
-                                    <div class="d-grid">
-                                        <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
-                                    </div>
-                                </form>
                             </div>
 
-                            <!-- Formulario de Registro -->
-                            <div class="tab-pane fade" id="registerForm" role="tabpanel" aria-labelledby="registerTab">
-                                <form class="needs-validation" id="register" novalidate>
-                                    <div class="mb-3">
-                                        <label for="registerName" class="form-label">Nombre Completo</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="bi bi-person"></i></span>
-                                            <input type="text" class="form-control" id="registerName"
-                                                placeholder="Tu nombre completo" required>
-                                        </div>
-                                        <div class="form-error" id="registerNameError">Por favor ingresa tu nombre</div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="registerEmail" class="form-label">Correo Electrónico</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                                            <input type="email" class="form-control" id="registerEmail"
-                                                placeholder="Tu correo electrónico" required>
-                                        </div>
-                                        <div class="form-error" id="registerEmailError">Por favor ingresa un correo
-                                            válido</div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="registerPassword" class="form-label">Contraseña</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                                            <input type="password" class="form-control" id="registerPassword"
-                                                placeholder="Tu contraseña" required>
-                                        </div>
-                                        <div class="form-error" id="registerPasswordError">La contraseña debe tener al
-                                            menos 6 caracteres</div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="registerConfirmPassword" class="form-label">Confirmar
-                                            Contraseña</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                                            <input type="password" class="form-control" id="registerConfirmPassword"
-                                                placeholder="Confirma tu contraseña" required>
-                                        </div>
-                                        <div class="form-error" id="registerConfirmPasswordError">Las contraseñas no
-                                            coinciden</div>
-                                    </div>
-
-                                    <div class="mb-4 form-check">
-                                        <input type="checkbox" class="form-check-input" id="terms" required>
-                                        <label  for="terms" validate>
-                                            He leído y acepto los <a href="#" id="showTerms">Términos y Condiciones</a>
-                                            del servicio
-                                        </label>
-                                        <div class="form-error" id="termsError">Debes aceptar los términos y condiciones
-                                            para continuar</div>
-                                    </div>
-
-                                    <div class="d-grid">
-                                        <button class="btn btn-primary" type="submit">Registrarse</button>
-                                    </div>
-                                </form>
+                            <div class="mb-4">
+                                <label for="loginPassword" class="form-label">Contraseña</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                    <input type="password" class="form-control" id="loginPassword"
+                                        placeholder="usuario1" required>
+                                </div>
+                                <div class="form-error" id="loginPasswordError">La contraseña debe tener al
+                                    menos 6 caracteres</div>
                             </div>
+
+                            <div class="d-grid">
+                                <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
+                            </div>
+                            </form>
+                        </div>
+
+                        <!-- Formulario de Registro -->
+                        <div class="tab-pane fade" id="registerForm" role="tabpanel" aria-labelledby="registerTab">
+                            <form class="needs-validation" id="register" novalidate>
+                                <div class="mb-3">
+                                    <label for="registerName" class="form-label">Nombre Completo</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                        <input type="text" class="form-control" id="registerName"
+                                            placeholder="Tu nombre completo" required>
+                                    </div>
+                                    <div class="form-error" id="registerNameError">Por favor ingresa tu nombre</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="registerEmail" class="form-label">Correo Electrónico</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                        <input type="email" class="form-control" id="registerEmail"
+                                            placeholder="Tu correo electrónico" required>
+                                    </div>
+                                    <div class="form-error" id="registerEmailError">Por favor ingresa un correo
+                                        válido</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="registerPassword" class="form-label">Contraseña</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                        <input type="password" class="form-control" id="registerPassword"
+                                            placeholder="Tu contraseña" required>
+                                    </div>
+                                    <div class="form-error" id="registerPasswordError">La contraseña debe tener al
+                                        menos 6 caracteres</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="registerConfirmPassword" class="form-label">Confirmar
+                                        Contraseña</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                                        <input type="password" class="form-control" id="registerConfirmPassword"
+                                            placeholder="Confirma tu contraseña" required>
+                                    </div>
+                                    <div class="form-error" id="registerConfirmPasswordError">Las contraseñas no
+                                        coinciden</div>
+                                </div>
+
+                                <div class="mb-4 form-check">
+                                    <input type="checkbox" class="form-check-input" id="terms" required>
+                                    <label for="terms" validate>
+                                        He leído y acepto los <a href="#" id="showTerms">Términos y Condiciones</a>
+                                        del servicio
+                                    </label>
+                                    <div class="form-error" id="termsError">Debes aceptar los términos y condiciones
+                                        para continuar</div>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button class="btn btn-primary" type="submit">Registrarse</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
 
         <!-- Modal para los términos y condiciones -->
@@ -248,7 +250,7 @@
 
                         <h6>8. Limitación de Responsabilidad</h6>
                         <p>
-                            En la máxima medida permitida por la ley aplicable, [Nombre de tu Tienda Online] no será
+                            En la máxima medida permitida por la ley aplicable, no seremos
                             responsable de ningún daño directo, indirecto, incidental, especial, consecuencial o
                             punitivo
                             que surja del uso o la imposibilidad de usar el Sitio Web o de la compra de productos,

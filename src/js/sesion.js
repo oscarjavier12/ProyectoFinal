@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-const admin = false;
 const login = document.getElementById('login');
 login.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -16,15 +15,25 @@ login.addEventListener('submit', (e) => {
     const password = document.getElementById('loginPassword');
     const emailError = document.getElementById('loginEmailError');
     const passwordError = document.getElementById('loginPasswordError');
+    const userError = document.getElementById('loginUserError');
 
     let isValid = true;
-
+    let admin = false;
     // Validar email
     if (!validateEmail(email.value)) {
         emailError.style.display = 'block';
         isValid = false;
     } else {
         emailError.style.display = 'none';
+        if (email.value === "usuario1@gmail.com" && password.value === "usuario1") {
+            isValid = true;
+        } else if (email.value === "admin@gmail.com" && password.value === "administrador") {
+            admin = true;
+            isValid = true;
+        } else {
+            isValid = false;
+            userError.style.display = 'block';
+        }
     }
 
     // Validar contraseña
@@ -34,14 +43,15 @@ login.addEventListener('submit', (e) => {
     } else {
         passwordError.style.display = 'none';
     }
-    if (email.value === "admin@gmail.com" && password.value === "administrador") {
-        admin = true;
-    }
- 
+
     // Si todo es válido, enviar formulario
     if (isValid) {
         sessionStorage.setItem('isLoggedIn', 'true');
-        window.location.href = "Natural.html";
+        if (admin) {
+            sessionStorage.setItem('isAdmin', 'true');
+        }
+
+        window.location.href = "index.html";
     }
 });
 
@@ -67,7 +77,7 @@ register.addEventListener('submit', (e) => {
     const termsError = document.getElementById('termsError');
 
     let isValid = true;
-
+    let admin = false;
     // Validar nombre
     if (name.value.trim() === '') {
         nameError.style.display = 'block';
@@ -113,3 +123,4 @@ register.addEventListener('submit', (e) => {
 
     }
 });
+
