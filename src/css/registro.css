@@ -28,3 +28,10 @@ body {
 .nav-tabs .nav-link.active {
     font-weight: bold;
 }
+.logo {
+    text-align: center;
+}
+.card img{
+    
+    width: 20%;
+}
