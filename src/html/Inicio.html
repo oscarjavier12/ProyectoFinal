@@ -4,130 +4,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/src/css/menu.css">
-    <link rel="stylesheet" href="/src/css/registro.css">
 
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/Inicio.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
 
 <body>
-    <header>
-        <div class="marca">
-            <img class="imagen" src="/src/resources/EH.png" alt="Marca EH">
-        </div>
-        <nav class="main-menu">
-            <ul>
-                <li><a href="/src/html/Inicio copy.html">Inicio</a></li>
-                <li><a href="/src/html/Natural.html">Natural</a></li>
-                <li><a href="/src/html/Quimico.html">Quimico</a></li>
-                <li><a href="/src/html/Contacto.html">Contacto</a></li>
 
-                <div class="botones">
-                    <button type="button" class="inicio" aria-label="Inicio">
-                        <!-- Add actual content or icon here -->
-                    </button>
+    <main>
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators" id="indicadores">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"
+                    aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../resources/imagenes/1.png" class="d-block mx-auto" alt="...">
                 </div>
-            </ul>
-        </nav>
-    </header>
-    <div class="container">
-        <div class="header">
-            <h2>¡Bienvenido!</h2>
+                <div class="carousel-item">
+                    <img src="../resources/imagenes/2.png" class="d-block mx-auto" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="../resources/imagenes/3.png" class="d-block mx-auto" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="../resources/imagenes/4.png" class="d-block mx-auto" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
 
-        <div class="forms-container">
-            <div class="form-tab">
-                <div class="tab active" id="loginTab">Iniciar Sesión</div>
-                <div class="tab" id="registerTab">Registrarse</div>
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <h1>Descubre tu mejor piel</h1>
+                    <p>Productos premium para el cuidado de la piel formulados con ingredientes naturales y respaldados
+                        científicamente para revelar tu belleza natural.</p>
+                    <a href="#" id="seePrduct" class="cta-button">Ver productos</a>
+                </div>
+                <div class="hero-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_kEZnEI8J4_LF1QRn4cYZ38oQ0GRn_H1hKw&s" style="width: 400;" alt="Productos para el cuidado de la piel" />
+                </div>
             </div>
+        </section>
 
-            <!-- Formulario de Inicio de Sesión -->
-            <div class="form-container active" id="loginForm">
-                <form id="login">
-                    <div class="form-group">
-                        <label for="loginEmail">Correo Electrónico</label>
-                        <input type="email" id="loginEmail" placeholder="Tu correo electrónico">
-                        <div class="form-error" id="loginEmailError">Por favor ingresa un correo válido</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="loginPassword">Contraseña</label>
-                        <input type="password" id="loginPassword" placeholder="Tu contraseña">
-                        <div class="form-error" id="loginPasswordError">La contraseña debe tener al menos 6 caracteres
-                        </div>
-                    </div>
-
-                    <button class="btn" type="submit">Iniciar Sesión</button>
-                </form>
+        <section class="features">
+            <h2 class="section-title">¿Por qué elegirnos?</h2>
+            <div class="features-container">
+                <div class="feature">
+                    <div class="feature-icon">✨</div>
+                    <h3>Ingredientes Naturales</h3>
+                    <p>Todos nuestros productos están formulados con ingredientes naturales de la más alta calidad,
+                        libres de parabenos, sulfatos y crueldad animal.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Respaldado por la Ciencia</h3>
+                    <p>Nuestras fórmulas son desarrolladas por dermatólogos expertos y sometidas a rigurosas pruebas
+                        para garantizar su eficacia.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">♻️</div>
+                    <h3>Sostenible</h3>
+                    <p>Comprometidos con el planeta, utilizamos envases reciclables y procesos de producción
+                        sostenibles.</p>
+                </div>
             </div>
+        </section>
 
-            <!-- Formulario de Registro -->
-            <div class="form-container" id="registerForm">
-                <form id="register">
-                    <div class="form-group">
-                        <label for="registerName">Nombre Completo</label>
-                        <input type="text" id="registerName" placeholder="Tu nombre completo">
-                        <div class="form-error" id="registerNameError">Por favor ingresa tu nombre</div>
-                    </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
-                    <div class="form-group">
-                        <label for="registerEmail">Correo Electrónico</label>
-                        <input type="email" id="registerEmail" placeholder="Tu correo electrónico">
-                        <div class="form-error" id="registerEmailError">Por favor ingresa un correo válido</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="registerPassword">Contraseña</label>
-                        <input type="password" id="registerPassword" placeholder="Tu contraseña">
-                        <div class="form-error" id="registerPasswordError">La contraseña debe tener al menos 6
-                            caracteres</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="registerConfirmPassword">Confirmar Contraseña</label>
-                        <input type="password" id="registerConfirmPassword" placeholder="Confirma tu contraseña">
-                        <div class="form-error" id="registerConfirmPasswordError">Las contraseñas no coinciden</div>
-                    </div>
-
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="terms" required>
-                        <label for="terms">He leído y acepto los <a href="#" id="showTerms">Términos y Condiciones</a>
-                            del servicio</label>
-                    </div>
-                    <div class="form-error" id="termsError">Debes aceptar los términos y condiciones para continuar
-                    </div>
-
-                    <button class="btn" type="submit">Registrarse</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Ventana modal para los términos y condiciones -->
-    <div id="termsModal"
-        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 1000;">
-        <div
-            style="background-color: white; width: 80%; max-width: 600px; margin: 50px auto; padding: 20px; border-radius: 10px; max-height: 80vh; overflow-y: auto;">
-            <h2 style="text-align: center; margin-bottom: 20px;">Términos y Condiciones</h2>
-            <div style="margin-bottom: 20px;">
-                <p>Este es un ejemplo de términos y condiciones. En una aplicación real, este texto debería ser
-                    redactado por un profesional legal.</p>
-                <p style="margin-top: 10px;">Al utilizar nuestro servicio, usted acepta los siguientes términos:</p>
-                <ul style="margin-left: 20px; margin-top: 10px;">
-                    <li>Toda la información proporcionada debe ser precisa y verdadera.</li>
-                    <li>Usted es responsable de mantener la confidencialidad de su cuenta.</li>
-                    <li>No utilizamos sus datos personales para fines distintos a los especificados en nuestra política
-                        de privacidad.</li>
-                    <li>Nos reservamos el derecho de suspender cuentas que violen nuestras políticas.</li>
-                    <li>El contenido publicado a través de nuestro servicio debe respetar las leyes aplicables.</li>
-                </ul>
-                <p style="margin-top: 10px;">Para obtener más información, contacte a nuestro equipo de soporte.</p>
-            </div>
-            <button class="btn" id="closeTerms"
-                style="background-color: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; display: block; margin: 0 auto;">Cerrar</button>
-        </div>
-    </div>
 </body>
 
 </html>

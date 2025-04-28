@@ -1,132 +1,327 @@
 body {
-    background-color: #f0dfc8;
-    color: #000000;
+    background-color: #f9f3e9;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-/* Header and branding */
-header {
-    padding: 20px;
+main {
+    padding-top: 10px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Header and Logo Styling */ 
+.main {
     background-color: #000000;
-    color: #000000dc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
 }
 
 .marca {
     text-align: center;
-    padding: 1%;
+    padding: 15px 0 5px;
+    transition: all 0.3s ease;
 }
 
 .imagen {
-    width: 400px;
+    width: 60%;
+    max-height: 90px;
+    transition: all 0.3s ease;
+    object-fit: contain;
 }
 
-/* Main navigation */
-.main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+/* Main Navigation Menu */
 .main-menu {
-    clear: both;
-    width: 100%;
-    height: 45px;
-    background: linear-gradient(to bottom, #ffffff, #ffffff);
-    border: 1px solid #C9C9C9;
-    border-radius: 8px;
-    box-shadow: 0 1px 1px #ccc;
-    overflow: hidden;
+    background-color: #000000;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 5px 0;
+    transition: all 0.3s ease;
 }
 
 .main-menu ul {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
     display: flex;
+    justify-content: center;
     align-items: center;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-top: 10px;
-    font-size: 15px;
-    list-style: none;
+    gap: 25px;
 }
 
-.main-menu ul div {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    font-size: 15px;
-    list-style: none;
+.main-menu li {
+    padding: 0;
+    position: relative;
 }
 
-.main-menu ul li a {
+.main-menu a {
     text-decoration: none;
+    display: block;
+    padding: 12px 20px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-radius: 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-menu a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.5s ease;
+}
+
+.main-menu a:hover::before {
+    left: 100%;
+}
+
+.main-menu a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.main-menu a.active {
+    background: linear-gradient(135deg, #ac6767, #c98b78);
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(201, 139, 120, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-menu ul {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0 15px;
+    }
+
+    .main-menu a {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .imagen {
+        width: 130px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-menu a {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .imagen {
+        width: 110px;
+    }
+
+    .main-menu ul {
+        gap: 8px;
+    }
+}
+
+/* Special hover effects */
+.main-menu a:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation for page transitions */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Footer*/
+.footer {
+    background-color: black;
+    color: white;
+    padding: 60px 0 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-logo {
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.about p {
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.social {
+    display: flex;
+    gap: 15px;
+}
+
+.social a {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 5px;
-    color: #afa1a1;
-    background: rgba(217, 217, 217, 0.58);
-    border: 1px solid white;
-    backdrop-filter: blur(6px);
-    border-radius: 17px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.5s;
-    user-select: none;
-    font-weight: bolder;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s ease;
 }
 
-.main-menu ul li a:hover {
-    background: linear-gradient(to bottom, #f2f2f2, #dad9d4);
-    border: 1px solid black;
-    transform: scale(1.05);
+.social a:hover {
+    background-color: #E8C999;
+    transform: translateY(-3px);
 }
 
-.main-menu ul li a:active {
-    transform: scale(0.95) rotateZ(1.7deg);
-}
-
-/* Menu buttons */
-.main-menu .botones button {
-    min-width: 30px;
-    min-height: 30px;
+.footer-col h3 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
     position: relative;
-    cursor: pointer;
-    padding: 5px 11px;
-    margin-left: 10px;
-    border: 0;
-    border-radius: 100px;
-    font-weight: bolder;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-    background: radial-gradient(ellipse at bottom,
-            rgba(217, 217, 217, 0.58) 0%,
-            rgba(184, 158, 158, 0.22) 45%);
-    color: #afa1a1;
+    padding-bottom: 10px;
 }
 
-.main-menu .botones button::before {
-    content: "";
-    width: 70%;
-    height: 1px;
+.footer-col h3::after {
+    content: '';
     position: absolute;
     bottom: 0;
-    left: 15%;
-    background: linear-gradient(90deg,
-            rgba(244, 181, 181, 0) 0%,
-            rgba(255, 255, 255, 1) 50%,
-            rgba(255, 255, 255, 0) 100%);
-    opacity: 0.2;
-    transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #E8C999;
 }
 
-.main-menu .botones button:hover {
-    border: 1px solid black;
-    color: rgb(102, 92, 92);
-    transform: scale(1.1) translateY(-3px);
+.links ul {
+    list-style: none;
 }
 
-.main-menu .botones button:hover::before {
-    opacity: 1;
+.links li {
+    margin-bottom: 10px;
+}
+
+.links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.links a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+.contact ul {
+    list-style: none;
+}
+
+.contact li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.contact i {
+    margin-top: 3px;
+    color: #FBF6E2;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.newsletter-form button {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FBF6E2;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-bottom p {
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.legal-links {
+    display: flex;
+    gap: 15px;
+}
+
+.legal-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.legal-links a:hover {
+    color: white;
+}
+
+@media (max-width: 576px) {
+    .eco-product-card {
+        flex: 0 0 260px;
+    }
 }
