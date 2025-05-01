@@ -1,7 +1,7 @@
 
-
 // Productos en el carrusel
 const productContainers = document.querySelectorAll('.eco-products-container');
+
 
 productContainers.forEach(container => {
     const track = container.querySelector('.eco-products-track');
@@ -17,7 +17,7 @@ productContainers.forEach(container => {
 
     // mostrar u ocultar botones de desplazamiento
     function updateButtons() {
-        leftBtn.style.display = scrollPosition <= 0 ? 'none' : 'flex';
+        leftBtn.style.display = scrollPosition <= 1 ? 'none' : 'flex';
         rightBtn.style.display = scrollPosition >= maxScroll ? 'none' : 'flex';
     }
 

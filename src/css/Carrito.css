@@ -68,9 +68,11 @@ main {
 .btn-edit {
     background: #ffc107;
     color: #212529;
+    
 }
 
 .btn-delete {
     background: #dc3545;
     color: white;
 }
+
