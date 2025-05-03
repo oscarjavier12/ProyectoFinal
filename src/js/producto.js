@@ -1,4 +1,6 @@
 
+
+    
 // Productos en el carrusel
 const productContainers = document.querySelectorAll('.eco-products-container');
 
@@ -78,3 +80,4 @@ categoryFilter?.addEventListener('change', function () {
     if (!selectedCategory) return;
     alert(`Filtrando por categoría: ${this.options[this.selectedIndex].text}`);
 });
+

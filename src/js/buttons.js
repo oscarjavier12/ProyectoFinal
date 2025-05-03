@@ -1,63 +1,73 @@
 // crear los botones con formato json
 const botones = {
     btnEdit: {
-        'id': 'btnEditar',
-        'clasName': 'btn-img',
-        'ruta': './src/assets/icon/edit.png',
-        'title': 'Editar',
-        'alt': 'Editar'
-    },
-    btnDelete: {
-        'id': 'btnEliminar',
-        'clasName': 'btn-img',
-        'ruta': './src/assets/icon/delete.png',
-        'title': 'Eliminar',
-        'alt': 'Eliminar'
+        id: 'btnEditar',
+        iconClass: 'bi bi-pencil-square',
+        title: 'Editar',
+        clase: 'btn-outline-primary'
     },
     btnSave: {
-        'id': 'btnGuardar',
-        'clasName': 'btn-img',
-        'ruta': './src/assets/icon/update.png',
-        'title': 'Guardar',
-        'alt': 'Guardar'
+        id: 'btnGuardar',
+        iconClass: 'bi bi-check2-circle',
+        title: 'Guardar',
+        clase: 'btn-outline-success'
+    },
+    btnDelete: {
+        id: 'btnEliminar',
+        iconClass: 'bi bi-trash',
+        title: 'Eliminar',
+        clase: 'btn-outline-danger'
     },
     btnCancel: {
-        'id': 'btnCancelar',
-        'clasName': 'btn-img',
-        'ruta': './src/assets/icon/cancel.png',
-        'title': 'Cancelar',
-        'alt': 'Cancelar'
+        id: 'btnCancelar',
+        iconClass: 'bi bi-x-circle',
+        title: 'Cancelar',
+        clase: 'btn-outline-secondary'
     }
-
 }
 
-function crearBotonesAcciones(celda, nameImg, id, ruta, titulo) {
-    nameImg.id = id;
-    nameImg.src = ruta;
-    nameImg.title = titulo;
-    nameImg.alt = titulo;
-    nameImg.clasName = 'btn-img';
-    celda.appendChild(nameImg);
+function crearBotonesAcciones(celda, boton, id, iconClass, titulo, clase) {
+    boton.id = id;
+    boton.title = titulo;
+    boton.className = `btn btn-sm ${clase}`;
 
-};
-function cambioBoton(event, id, ruta, titulo) {
+    // Crear el icono como elemento DOM
+    const iconElement = document.createElement('i');
+    iconElement.className = iconClass;
+    boton.appendChild(iconElement);
+
+    celda.appendChild(boton);
+}
+
+function cambioBoton(event, id, iconClass, titulo, clase) {
     if (event.target) {
-        event.target.id = id;
-        event.target.src = ruta;
-        event.target.title = titulo;
-        event.target.alt = titulo;
+        const boton = event.target.closest('button');
+        if (boton) {
+            boton.id = id;
+            boton.title = titulo;
+            boton.className = `btn btn-sm ${clase}`;
+
+            // Limpiar el botón y agregar el nuevo icono
+            boton.innerHTML = '';  // Necesario para eliminar el icono previo
+            const iconElement = document.createElement('i');
+            iconElement.className = iconClass;
+            boton.appendChild(iconElement);
+        }
     }
 }
-function cambioBtnSinEvent(boton, id, ruta, titulo) {
+
+function cambioBtnSinEvent(boton, id, iconClass, titulo, clase) {
     if (boton) {
         boton.id = id;
-        boton.src = ruta;
         boton.title = titulo;
-        boton.alt = titulo;
-    }
+        boton.className = `btn btn-sm ${clase}`;
 
+        // Limpiar el botón y agregar el nuevo icono
+        boton.innerHTML = '';  // Necesario para eliminar el icono previo
+        const iconElement = document.createElement('i');
+        iconElement.className = iconClass;
+        boton.appendChild(iconElement);
+    }
 }
 
 export default { botones, crearBotonesAcciones, cambioBoton, cambioBtnSinEvent };
-
-

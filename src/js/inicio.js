@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+
 const cerrar = document.getElementById('cerrar');
 cerrar.addEventListener('click', (e) => {
     e.preventDefault();
@@ -39,42 +40,73 @@ menu[3].addEventListener("click", function () {
 menu[5].addEventListener("click", function () {
     cargarContenido("/src/html/Carrito.html");
 });
-const seePrduct = document.getElementById('seePrduct');
-seePrduct.addEventListener("click", function () {
-    cargarContenido("/src/html/Productos.html");
-});
+
+
 
 function cargarContenido(ruta) {
-    fetch(ruta)
-        .then(response => response.text())
+    const contenedor = document.getElementById('contenedor');
+
+    // Limpiar el contenedor antes de cargar nuevo contenido
+    while (contenedor.firstChild) {
+        contenedor.removeChild(contenedor.firstChild);
+    }
+
+    return fetch(ruta)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
+            }
+            return response.text();
+        })
         .then(html => {
-            document.getElementById('contenedor').innerHTML = html;
-            // Buscar y ejecutar scripts dentro del HTML cargado (ejemplo básico)
-            const scripts = document.getElementById('contenedor').querySelectorAll('script');
+
+            contenedor.innerHTML = html;
+
+            const scripts = Array.from(contenedor.querySelectorAll('script'));
+            const scriptPromises = [];
+
             scripts.forEach(script => {
                 const scriptElement = document.createElement('script');
-                if (script.type) {
-                    scriptElement.type = script.type;
-                }
+                Array.from(script.attributes).forEach(attr => {
+                    scriptElement.setAttribute(attr.name, attr.value);
+                });
+
+                const loadPromise = new Promise((resolve, reject) => {
+                    scriptElement.onload = resolve;
+                    scriptElement.onerror = reject;
+                });
+
                 if (script.src) {
-                    scriptElement.src = script.src;
-                    // Para scripts externos, asegúrate de que se carguen antes de continuar si es necesario
-                    scriptElement.onload = () => {
-                        console.log(`Script cargado: ${script.src}`);
-                        // Aquí podrías ejecutar alguna función después de cargar el script
-                    };
-                    document.head.appendChild(scriptElement);
-                    script.remove(); // Opcional: eliminar el script original del HTML insertado
+                    // Cache busting (opcional)
+                    const cacheBustUrl = script.src + '?t=' + Date.now();
+                    scriptElement.src = cacheBustUrl;
+                    scriptPromises.push(loadPromise);
                 } else {
-                    scriptElement.textContent = script.textContent;
-                    document.head.appendChild(scriptElement);
-                    script.remove(); // Opcional
+                    try {
+                        new Function(script.textContent)(); // Ejecutar script inline
+                        scriptPromises.push(Promise.resolve());
+                    } catch (error) {
+                        console.error('Error al ejecutar script inline:', error);
+                        scriptPromises.push(Promise.resolve()); // Resuelve para continuar
+                    }
                 }
+
+                script.parentNode.replaceChild(scriptElement, script);
             });
+
+            return Promise.all(scriptPromises)
+                .then(() => {
+                    console.log('Contenido cargado y scripts procesados.');
+                    // Llamar a una función de inicialización global si existe
+                    if (typeof inicializarContenidoDinamico === 'function') {
+                        inicializarContenidoDinamico();
+                    }
+                    return contenedor;
+                });
         })
         .catch(error => {
-            console.error('Error al cargar el HTML:', error);
+            console.error('Error al cargar contenido:', error);
+            throw error;
         });
-};
-
+}
 

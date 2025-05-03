@@ -1,5 +1,6 @@
 import buttons from "./buttons.js";
-
+cargarBootstrapIcons();
+verificarTablaVacia();
 // Configuración inicial - Input Range
 const rango = document.getElementById('productCantidad');
 rango.addEventListener('input', function () {
@@ -34,18 +35,21 @@ cuerpo.addEventListener('click', function (event) {
                 cell.appendChild(input);
             }
         });
+
         buttons.cambioBoton(
             event,
             buttons.botones.btnSave.id,
-            buttons.botones.btnSave.ruta,
-            buttons.botones.btnSave.title
+            buttons.botones.btnSave.iconClass,
+            buttons.botones.btnSave.title,
+            buttons.botones.btnSave.clase
         );
         const deleteButton = rowEditar.querySelector('#btnEliminar');
         buttons.cambioBtnSinEvent(
             deleteButton,
             buttons.botones.btnCancel.id,
-            buttons.botones.btnCancel.ruta,
-            buttons.botones.btnCancel.title
+            buttons.botones.btnCancel.iconClass,
+            buttons.botones.btnCancel.title,
+            buttons.botones.btnCancel.clase
         );
 
         return;
@@ -57,24 +61,24 @@ cuerpo.addEventListener('click', function (event) {
         const cajitaTexto = rowSave.querySelectorAll('input');
 
         cajitaTexto.forEach((input, index) => {
-            if (index < cajitaTexto.length) {
-                const valorNuevo = input.value;
-                input.parentNode.textContent = valorNuevo;
-            }
+            const valorNuevo = input.value;
+            input.parentNode.textContent = valorNuevo;
         });
 
         buttons.cambioBoton(
             event,
             buttons.botones.btnEdit.id,
-            buttons.botones.btnEdit.ruta,
-            buttons.botones.btnEdit.title
+            buttons.botones.btnEdit.iconClass,
+            buttons.botones.btnEdit.title,
+            buttons.botones.btnEdit.clase
         );
         const cancelarBoton = rowSave.querySelector('#btnCancelar');
         buttons.cambioBtnSinEvent(
             cancelarBoton,
             buttons.botones.btnDelete.id,
-            buttons.botones.btnDelete.ruta,
-            buttons.botones.btnDelete.title
+            buttons.botones.btnDelete.iconClass,
+            buttons.botones.btnDelete.title,
+            buttons.botones.btnDelete.clase
         );
 
         return;
@@ -98,15 +102,17 @@ cuerpo.addEventListener('click', function (event) {
         buttons.cambioBoton(
             event,
             buttons.botones.btnDelete.id,
-            buttons.botones.btnDelete.ruta,
-            buttons.botones.btnDelete.title
+            buttons.botones.btnDelete.iconClass,
+            buttons.botones.btnDelete.title,
+            buttons.botones.btnDelete.clase
         );
         const guardarBoton = rowCancel.querySelector('#btnGuardar');
         buttons.cambioBtnSinEvent(
             guardarBoton,
             buttons.botones.btnEdit.id,
-            buttons.botones.btnEdit.ruta,
-            buttons.botones.btnEdit.title
+            buttons.botones.btnEdit.iconClass,
+            buttons.botones.btnEdit.title,
+            buttons.botones.btnEdit.clase
         );
         return;
     }
@@ -142,7 +148,17 @@ function ocultarTablaProductos() {
             // Crear mensaje para cuando la tabla está vacía
             const message = document.createElement('div');
             message.className = 'empty-table-message alert alert-info text-center';
-            message.innerHTML = '<i class="bi bi-cart-x"></i> No hay productos en el carrito';
+
+            // Crear icono para el mensaje
+            const cartIcon = document.createElement('i');
+            cartIcon.className = 'bi bi-clipboard-x';
+            message.appendChild(cartIcon);
+
+            // Espacio entre el icono y el texto
+            message.appendChild(document.createTextNode(' '));
+
+            const textNode = document.createTextNode('No hay productos');
+            message.appendChild(textNode);
 
             // Insertar mensaje antes de la tabla
             tableContainer.insertBefore(message, tableContainer.querySelector('table'));
@@ -177,14 +193,43 @@ function showAlert(message, type) {
     const alertElement = document.createElement('div');
     alertElement.className = `alert alert-${type} alert-dismissible fade show`;
     alertElement.role = 'alert';
-    alertElement.innerHTML = `
-        ${message}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    `;
+
+    // Agregar icono según el tipo de alerta
+    const alertIcon = document.createElement('i');
+
+    if (type === 'success') {
+        alertIcon.className = 'bi bi-check-circle';
+    } else if (type === 'danger') {
+        alertIcon.className = 'bi bi-exclamation-triangle';
+    } else if (type === 'warning') {
+        alertIcon.className = 'bi bi-exclamation-circle';
+    } else {
+        alertIcon.className = 'bi bi-info-circle';
+    }
+
+    alertElement.appendChild(alertIcon);
+
+    // Espacio entre el icono y el texto
+    alertElement.appendChild(document.createTextNode(' '));
+
+    // Crear el texto de la alerta
+    const textNode = document.createTextNode(message);
+    alertElement.appendChild(textNode);
+
+    // Crear botón de cierre
+    const closeButton = document.createElement('button');
+    closeButton.type = 'button';
+    closeButton.className = 'btn-close';
+    closeButton.setAttribute('data-bs-dismiss', 'alert');
+    closeButton.setAttribute('aria-label', 'Close');
+
+    // Añadir botón de cierre a la alerta
+    alertElement.appendChild(closeButton);
 
     // Insertar alerta al principio del contenedor
     const container = document.querySelector('.admin-container');
-    container.insertBefore(alertElement, container.firstChild);
+    const tabla=document.querySelector('#productTable');
+    container.insertBefore(alertElement, tabla);
 
     // Auto-eliminar después de 3 segundos
     setTimeout(() => {
@@ -224,7 +269,7 @@ form.addEventListener('submit', function (event) {
     // Validar el formulario
     if (!validateForm(this)) {
         // Mostrar mensaje de error
-        showAlert('<i class="bi bi-exclamation-triangle"></i> Por favor, complete todos los campos obligatorios correctamente.', 'danger');
+        showAlert('Por favor, complete todos los campos obligatorios correctamente.', 'danger');
         return; // Detener la ejecución
     }
 
@@ -240,7 +285,7 @@ form.addEventListener('submit', function (event) {
     mostarTablaProductos();
 
     // Mostrar mensaje de éxito
-    showAlert('<i class="bi bi-check-circle"></i> Producto agregado correctamente.', 'success');
+    showAlert('Producto agregado correctamente.', 'success');
 
     // Resetear el formulario
     this.reset();
@@ -270,7 +315,7 @@ const agregarFIlaTabla = (formData, tbody) => {
 
     // Manejar el checkbox
     const featured = formData.get('productFeatured') ? 'Si' : 'No';
-    agregarCelda(fila, featured);
+    agregarCeldaBooleana(fila, featured);
 
     // Obtener el valor del radio button seleccionado
     const availability = formData.get('productAvailability');
@@ -292,7 +337,7 @@ const agregarFIlaTabla = (formData, tbody) => {
 
     agregarCelda(fila, availabilityText);
 
-    // Crear celda para acciones con botones con iconos
+    // Crear celda para acciones con botones con texto
     const actionCell = document.createElement('td');
     actionCell.className = 'd-flex gap-2';
 
@@ -301,14 +346,22 @@ const agregarFIlaTabla = (formData, tbody) => {
     editButton.id = 'btnEditar';
     editButton.className = 'btn btn-sm btn-outline-primary';
     editButton.title = 'Editar';
-    editButton.innerHTML = '<i class="bi bi-pencil-square"></i>';
+
+    // Crear el icono como elemento DOM
+    const editIcon = document.createElement('i');
+    editIcon.className = 'bi bi-pencil-square';
+    editButton.appendChild(editIcon);
 
     // Botón de eliminar con icono
     const deleteButton = document.createElement('button');
     deleteButton.id = 'btnEliminar';
     deleteButton.className = 'btn btn-sm btn-outline-danger';
     deleteButton.title = 'Eliminar';
-    deleteButton.innerHTML = '<i class="bi bi-trash"></i>';
+
+    // Crear el icono como elemento DOM
+    const deleteIcon = document.createElement('i');
+    deleteIcon.className = 'bi bi-trash';
+    deleteButton.appendChild(deleteIcon);
 
     // Agregar botones a la celda
     actionCell.appendChild(editButton);
@@ -325,19 +378,29 @@ const agregarFIlaTabla = (formData, tbody) => {
 function agregarCelda(fila, valor) {
     const col = document.createElement('td');
 
-    // Manejar valores especiales
-    if (valor === 'Si') {
-        valor = '✔️';
-    } else if (valor === 'No') {
-        valor = '❌';
-    } else {
-        // Para valores normales de texto, limitar longitud si es necesario
-        if (typeof valor === 'string' && valor.length > 50) {
-            valor = valor.substring(0, 50) + '...';
-        }
-
+    // Para valores normales de texto, limitar longitud si es necesario
+    if (typeof valor === 'string' && valor.length > 50) {
+        valor = valor.substring(0, 50) + '...';
     }
     col.textContent = valor;
+
+    fila.appendChild(col);
+}
+
+// Función para agregar celda booleana (Si/No)
+function agregarCeldaBooleana(fila, valor) {
+    const col = document.createElement('td');
+
+    // Texto simple para valores booleanos
+    col.textContent = valor;
+
+    // Aplicar estilo según el valor
+    if (valor === 'Si') {
+        col.className = 'text-success';
+    } else if (valor === 'No') {
+        col.className = 'text-danger';
+    }
+
     fila.appendChild(col);
 }
 
@@ -362,6 +425,7 @@ function cargarBootstrapIcons() {
         document.head.appendChild(link);
     }
 }
+
 
 // Inicializar aplicación
 document.addEventListener('DOMContentLoaded', function () {
