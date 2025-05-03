@@ -1,0 +1,299 @@
+
+
+.section-header {
+    padding: 25px 30px;
+    margin: 15px auto 25px;
+    width: 90%;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #67ac64, #67ac64b9);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #ffffff80, #ffffffcc, #ffffff80);
+}
+
+.section-header h1 {
+    margin-top: 0.3em;
+    color: #fff;
+    font-size: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.section-header .description {
+    margin: 15px 0;
+    line-height: 1.6;
+    color: #fff;
+    font-size: 1.1rem;
+    max-width: 800px;
+}
+
+/* Products container */
+.productos-section {
+    padding-bottom: 40px;
+}
+
+.contenido {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+    overflow: hidden;
+}
+
+.elementos {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    width: 50%;
+    padding: 10px 0;
+}
+
+/* Product cards */
+.producto-card {
+    flex: 0 0 calc(50% - 20px);
+    min-height: 420px;
+    background: linear-gradient(to bottom, #65e286, #57e079);
+    border-radius: 12px;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.producto-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.producto-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.producto-card h2 {
+    font-size: 22px;
+    color: #333;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+}
+
+.producto-card .descripcion {
+    font-size: 15px;
+    color: #333;
+    margin: 10px 5px 15px;
+    flex-grow: 1;
+    line-height: 1.5;
+    position: relative;
+    z-index: 2;
+}
+
+.producto-card img {
+    width: 160px;
+    height: 160px;
+    border-radius: 15px;
+    object-fit: cover;
+    margin: 10px auto 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.producto-card:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.producto-compra {
+    color: #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.producto-compra .precio {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0;
+    color: #333;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-comprar {
+    padding: 8px 16px;
+    background: linear-gradient(to bottom, #c2a6a6, #b39797);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-comprar::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.5s ease;
+}
+
+.btn-comprar:hover {
+    background: linear-gradient(to bottom, #cdb4b4, #a38787);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-comprar:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.btn-comprar:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Carousel navigation arrows */
+.flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.flecha:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.flecha:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.izquierda {
+    left: 10px;
+}
+
+.derecha {
+    right: 10px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+    .producto-card {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .section-header {
+        padding: 20px;
+        width: 95%;
+    }
+
+    .section-header h1 {
+        font-size: 1.7rem;
+    }
+
+    .section-header .description {
+        font-size: 1rem;
+    }
+
+    .producto-card {
+        flex: 0 0 calc(100% - 20px);
+        min-height: 400px;
+    }
+
+    .flecha {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .section-header {
+        padding: 15px;
+    }
+
+    .section-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .producto-card {
+        padding: 15px;
+    }
+
+    .producto-card h2 {
+        font-size: 18px;
+    }
+
+    .producto-card .descripcion {
+        font-size: 14px;
+    }
+
+    .producto-compra .precio {
+        font-size: 16px;
+    }
+
+    .btn-comprar {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}

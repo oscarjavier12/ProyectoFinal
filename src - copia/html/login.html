@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="" href="/src/css/registro.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <main class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card" id="cardHeader">
+
+                    <div class="card-header text-center py-3">
+                        <img src="../resources/EHLogo.png" alt="">
+                        <h2 class="mb-0">¡Bienvenid@"!</h2>
+                    </div>
+                    <div class="card-body p-4">
+                        <!-- Pestañas de navegación -->
+                        <ul class="nav nav-tabs mb-4" id="formTabs" role="tablist">
+                            <li class="nav-item w-50 text-center" role="presentation">
+                                <button class="nav-link active w-100" id="loginTab" data-bs-toggle="tab"
+                                    data-bs-target="#loginForm" type="button" role="tab" aria-controls="loginForm"
+                                    aria-selected="true">Iniciar Sesión</button>
+                            </li>
+                            <li class="nav-item w-50 text-center" role="presentation">
+                                <button class="nav-link w-100" id="registerTab" data-bs-toggle="tab"
+                                    data-bs-target="#registerForm" type="button" role="tab" aria-controls="registerForm"
+                                    aria-selected="false">Registrarse</button>
+                            </li>
+                        </ul>
+
+                        <!-- Contenido de las pestañas -->
+                        <div class="tab-content" id="formTabsContent">
+                            <!-- Formulario de Inicio de Sesión -->
+                            <div class="tab-pane fade show active" id="loginForm" role="tabpanel"
+                                aria-labelledby="loginTab">
+                                <form class="needs-validation" id="login" novalidate>
+                                    <div class="mb-3">
+                                        <label for="loginEmail" class="form-label">Correo Electrónico</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                            <input type="email" class="form-control" id="loginEmail"
+                                                placeholder="usuario1@gmail.com" required>
+                                        </div>
+                                        <div class="form-error" id="loginEmailError">Por favor ingresa un correo válido
+                                        </div>
+                                        <div class="form-error" id="loginUserError">Usuario no registrado</div>
+                                    </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="loginPassword" class="form-label">Contraseña</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                    <input type="password" class="form-control" id="loginPassword"
+                                        placeholder="usuario1" required>
+                                </div>
+                                <div class="form-error" id="loginPasswordError">La contraseña debe tener al
+                                    menos 6 caracteres</div>
+                            </div>
+
+                            <div class="d-grid">
+                                <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
+                            </div>
+                            </form>
+                        </div>
+
+                        <!-- Formulario de Registro -->
+                        <div class="tab-pane fade" id="registerForm" role="tabpanel" aria-labelledby="registerTab">
+                            <form class="needs-validation" id="register" novalidate>
+                                <div class="mb-3">
+                                    <label for="registerName" class="form-label">Nombre Completo</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                        <input type="text" class="form-control" id="registerName"
+                                            placeholder="Tu nombre completo" required>
+                                    </div>
+                                    <div class="form-error" id="registerNameError">Por favor ingresa tu nombre</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="registerEmail" class="form-label">Correo Electrónico</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                        <input type="email" class="form-control" id="registerEmail"
+                                            placeholder="Tu correo electrónico" required>
+                                    </div>
+                                    <div class="form-error" id="registerEmailError">Por favor ingresa un correo
+                                        válido</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="registerPassword" class="form-label">Contraseña</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                        <input type="password" class="form-control" id="registerPassword"
+                                            placeholder="Tu contraseña" required>
+                                    </div>
+                                    <div class="form-error" id="registerPasswordError">La contraseña debe tener al
+                                        menos 6 caracteres</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="registerConfirmPassword" class="form-label">Confirmar
+                                        Contraseña</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                                        <input type="password" class="form-control" id="registerConfirmPassword"
+                                            placeholder="Confirma tu contraseña" required>
+                                    </div>
+                                    <div class="form-error" id="registerConfirmPasswordError">Las contraseñas no
+                                        coinciden</div>
+                                </div>
+
+                                <div class="mb-4 form-check">
+                                    <input type="checkbox" class="form-check-input" id="terms" required>
+                                    <label for="terms" validate>
+                                        He leído y acepto los <a href="#" id="showTerms">Términos y Condiciones</a>
+                                        del servicio
+                                    </label>
+                                    <div class="form-error" id="termsError">Debes aceptar los términos y condiciones
+                                        para continuar</div>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button class="btn btn-primary" type="submit">Registrarse</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Modal para los términos y condiciones -->
+        <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="termsModalLabel">Términos y Condiciones</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Al utilizar nuestro servicio, usted acepta los siguientes términos:</p>
+                        <p>Términos y Condiciones de Venta </p>
+
+                        <h6>1. Aceptación de los Términos </h6>
+
+                        <p>
+                            Al acceder y utilizar el sitio web y
+                            al realizar cualquier compra de productos ofrecidos en él, usted (en adelante, el "Cliente")
+                            acepta los presentes Términos y Condiciones de Venta (en adelante, los "Términos y
+                            Condiciones"). Si no está de acuerdo con alguno de los términos aquí establecidos, no debe
+                            utilizar el Sitio Web ni realizar compras.
+                        </p>
+
+                        <h6>2. Información del Producto</h6>
+
+                        <p>
+                            Nos esforzamos por proporcionar descripciones precisas y actualizadas de nuestros productos
+                            para
+                            el cuidado de la piel. Sin embargo, no garantizamos que las descripciones, imágenes,
+                            ingredientes o cualquier otra información del producto estén completamente libres de
+                            errores,
+                            sean exhaustivas o estén actualizadas en todo momento. Las imágenes de los productos son
+                            únicamente para fines ilustrativos y pueden variar ligeramente del producto real.
+                        </p>
+                        <h6>3. Precios y Pagos </h6>
+
+                        <p>
+                            Todos los precios mostrados en el Sitio Web están en [Moneda] e incluyen los impuestos
+                            aplicables (IVA, si corresponde).
+                            Nos reservamos el derecho de modificar los precios de los productos en cualquier momento sin
+                            previo aviso. Sin embargo, los precios aplicables a su pedido serán los vigentes en el
+                            momento
+                            en que realice la compra.
+                            Aceptamos los métodos de pago especificados en el Sitio Web. Al realizar un pedido, usted
+                            declara y garantiza que está autorizado a utilizar el método de pago proporcionado.
+                            El pago se cargará a su método de pago al momento de procesar su pedido.
+                        </p>
+                        <h6>4. Pedidos y Envíos</h6>
+
+                        <p>
+                            Al realizar un pedido a través del Sitio Web, usted está realizando una oferta para comprar
+                            los
+                            productos seleccionados bajo estos Términos y Condiciones. Nos reservamos el derecho de
+                            aceptar
+                            o rechazar su pedido a nuestra discreción.
+                            Una vez que su pedido ha sido aceptado, le enviaremos una confirmación por correo
+                            electrónico
+                            con los detalles de su pedido. Este correo electrónico no constituye una aceptación
+                            definitiva
+                            del pedido, sino una confirmación de que lo hemos recibido.
+                            El envío se realizará a la dirección especificada por el Cliente durante el proceso de
+                            compra.
+                            Es responsabilidad del Cliente asegurarse de que la dirección de envío sea correcta y
+                            completa.
+                            Los plazos de entrega son estimados y pueden variar según la ubicación y las condiciones de
+                            envío. No nos hacemos responsables de los retrasos en la entrega que estén fuera de nuestro
+                            control.
+                            Los gastos de envío se calcularán y se mostrarán al Cliente antes de finalizar la compra.
+                        </p>
+                        <h6> 5. Política de Devoluciones y Reembolsos</h6>
+                        <p>
+                            Aceptamos devoluciones de productos sin abrir y en su embalaje original dentro de los 30
+                            días siguientes a la recepción del pedido.
+                            Para solicitar una devolución, el Cliente deberá contactarnos a través de [Dirección de
+                            correo
+                            electrónico o formulario de contacto] e indicar el número de pedido y el motivo de la
+                            devolución.
+                            Una vez que hayamos recibido y aprobado la devolución, procesaremos el reembolso del precio
+                            de compra del producto (excluyendo los gastos de envío originales) en un plazo de [Número]
+                            días
+                            hábiles. El reembolso se realizará a través del mismo método de pago utilizado para la
+                            compra original.
+                            No se aceptarán devoluciones de productos que hayan sido abiertos, utilizados o dañados por
+                            el Cliente.
+                        </p>
+                        <h6> 6. Propiedad Intelectual </h6>
+
+                        <p>Todos los contenidos del Sitio Web, incluyendo textos, imágenes, logotipos, diseños,
+                            gráficos,
+                            iconos, software y cualquier otro material, son propiedad exclusiva de la tienda o de sus
+                            licenciantes y están protegidos por las leyes de propiedad intelectual
+                            aplicables.
+                            Queda estrictamente prohibida la reproducción, distribución, modificación, exhibición o
+                            cualquier otro uso no autorizado de los contenidos del Sitio Web sin el consentimiento
+                            previo
+                            por escrito.
+                        </p>
+                        <h6>7. Privacidad</h6>
+                        <p>
+                            El tratamiento de los datos personales del Cliente se realizará de conformidad con nuestra
+                            Política de Privacidad.
+                            Al
+                            utilizar el Sitio Web y realizar compras, el Cliente consiente el tratamiento de sus datos
+                            personales de acuerdo con dicha política.
+                        </p>
+
+                        <h6>8. Limitación de Responsabilidad</h6>
+                        <p>
+                            En la máxima medida permitida por la ley aplicable, no seremos
+                            responsable de ningún daño directo, indirecto, incidental, especial, consecuencial o
+                            punitivo
+                            que surja del uso o la imposibilidad de usar el Sitio Web o de la compra de productos,
+                            incluyendo, pero no limitado a, la pérdida de beneficios, datos o cualquier otra pérdida
+                            intangible.
+                            Nuestra responsabilidad total ante el Cliente por cualquier reclamación relacionada con
+                            estos
+                            Términos y Condiciones o con la compra de productos no excederá el importe total pagado por
+                            el
+                            Cliente por el pedido correspondiente.
+                        </p>
+                        <h6>9. Ley Aplicable y Jurisdicción</h6>
+                        <p>
+                            Estos Términos y Condiciones se regirán e interpretarán de acuerdo con las leyes de
+                            [País/Estado]. Cualquier disputa que surja en relación con estos Términos y Condiciones se
+                            someterá a la jurisdicción exclusiva de los tribunales del Estado.
+                        </p>
+                        <h6> 10. Modificaciones de los Términos y Condiciones</h6>
+                        <p>
+                            Nos reservamos el derecho de modificar estos Términos y Condiciones en cualquier momento y
+                            sin
+                            previo aviso. Las modificaciones entrarán en vigor a partir de su publicación en el Sitio
+                            Web.
+                            Se recomienda al Cliente revisar periódicamente los Términos y Condiciones para estar al
+                            tanto
+                            de cualquier cambio.
+                        </p>
+                        <h6>Para obtener más información, contacte a nuestro equipo de soporte.</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/formValidation.js"></script>
+    <script src="../js/sesion.js"></script>
+
+</body>
+
+</html>
