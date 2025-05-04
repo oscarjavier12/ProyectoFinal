@@ -4,10 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/Inicio.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/src/css/menu.css">
-    
-    
+
 </head>
 
 <body>
@@ -17,20 +21,94 @@
         </div>
         <nav class="main-menu">
             <ul>
-                <li class="menu"><a href="#">Inicio</a></li>
-                <li class="menu"><a href="#">¿Quienes somos?</a></li>
-                <li class="menu"><a href="#">Productos</a></li>
-                <li class="menu"><a href="#">Servicios</a></li>
-                <li class="menu"><a href="#">Contactanos</a></li>
-                <li class="menu" id="admin" style="display: none;"><a href="#">Administrar Productos</a></li>
-                <li class="menu" id="cerrar"><a href="#">Logout</a></li>
+                <li><a href="/src/html/Index.html">Inicio</a></li>
+                <li><a href="/src/html/Informacion.html">¿Quienes somos?</a></li>
+                <li><a href="/src/html/Productos.html">Productos</a></li>
+                <li><a href="/src/html/Servicios.html">Servicios</a></li>
+                <li><a href="/src/html/Contacto.html">Contactanos</a></li>
+                <li id="admin" style="display: none;"><a href="/src/html/Administrar.html">Administrar Productos</a></li>
+                <li id="cerrar"><a href="#">Logout</a></li>
             </ul>
         </nav>
     </header>
-    <main id="contenedor">
+    <main>
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators" id="indicadores">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"
+                    aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../resources/imagenes/1.png" class="d-block mx-auto" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="../resources/imagenes/2.png" class="d-block mx-auto" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="../resources/imagenes/3.png" class="d-block mx-auto" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="../resources/imagenes/4.png" class="d-block mx-auto" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <h1>Descubre tu mejor piel</h1>
+                    <p>Productos premium para el cuidado de la piel formulados con ingredientes naturales y respaldados
+                        científicamente para revelar tu belleza natural.</p>
+                    <a href="#" id="seePrduct" class="cta-button">Ver productos</a>
+                </div>
+                <div class="hero-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_kEZnEI8J4_LF1QRn4cYZ38oQ0GRn_H1hKw&s"
+                        style="width: 400;" alt="Productos para el cuidado de la piel" />
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2 class="section-title">¿Por qué elegirnos?</h2>
+            <div class="features-container">
+                <div class="feature">
+                    <div class="feature-icon">✨</div>
+                    <h3>Ingredientes Naturales</h3>
+                    <p>Todos nuestros productos están formulados con ingredientes naturales de la más alta calidad,
+                        libres de parabenos, sulfatos y crueldad animal.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Respaldado por la Ciencia</h3>
+                    <p>Nuestras fórmulas son desarrolladas por dermatólogos expertos y sometidas a rigurosas pruebas
+                        para garantizar su eficacia.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">♻️</div>
+                    <h3>Sostenible</h3>
+                    <p>Comprometidos con el planeta, utilizamos envases reciclables y procesos de producción
+                        sostenibles.</p>
+                </div>
+            </div>
+        </section>
 
     </main>
-
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -88,9 +166,10 @@
             </div>
         </div>
     </footer>
-    
+
     <script src="../js/inicio.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

@@ -1,6 +1,8 @@
 import buttons from "./buttons.js";
-cargarBootstrapIcons();
-verificarTablaVacia();
+document.addEventListener('DOMContentLoaded', function () {
+    cargarBootstrapIcons();
+    verificarTablaVacia();
+});
 // Configuración inicial - Input Range
 const rango = document.getElementById('productCantidad');
 rango.addEventListener('input', function () {
@@ -228,7 +230,7 @@ function showAlert(message, type) {
 
     // Insertar alerta al principio del contenedor
     const container = document.querySelector('.admin-container');
-    const tabla=document.querySelector('#productTable');
+    const tabla = document.querySelector('#productTable');
     container.insertBefore(alertElement, tabla);
 
     // Auto-eliminar después de 3 segundos
