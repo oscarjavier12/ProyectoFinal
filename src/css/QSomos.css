@@ -1,7 +1,7 @@
 /* Hero Section */
 .hero-section {
     position: relative;
-    height: 60vh;
+    height: 40vh;
     background: url('https://img.freepik.com/free-photo/zero-waste-beauty-products_23-2149304152.jpg?t=st=1745354996~exp=1745358596~hmac=9f362e092bf844cd7e94b6dded750a5ddfcb4c2b9cfdc07f375e2e8ef0ee5da5&w=1380') no-repeat center center;
     background-size: cover;
     display: flex;
@@ -11,6 +11,12 @@
     text-align: center;
     color: white;
     margin-bottom: 50px;
+}
+
+main {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* Animaciones */
@@ -30,7 +36,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(49, 49, 43, 0.293);
+    background-color: rgba(49, 49, 43, 0.392);
 }
 
 .hero-content {

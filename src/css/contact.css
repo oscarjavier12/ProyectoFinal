@@ -18,6 +18,12 @@
     animation: fadeIn 0.5s ease-in-out;
 }
 
+main {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Hero Section */
 .hero-section {
     position: relative;
