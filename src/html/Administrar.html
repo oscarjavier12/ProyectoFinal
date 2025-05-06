@@ -13,7 +13,7 @@
 
 <body>
     <header class="main">
-        
+
     </header>
 
     <main class="caja">
@@ -39,6 +39,10 @@
                 <form class=" row g-3 needs-validation" id="productForm" novalidate>
                     <div class="row mb-3">
                         <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="productId" class="form-label">Nombre del Producto</label>
+                                <input type="text" class="form-control" name="productId" id="productId" required>
+                            </div>
                             <div class="mb-3">
                                 <label for="productName" class="form-label">Nombre del Producto</label>
                                 <input type="text" class="form-control" name="productName" id="productName" required>
@@ -120,10 +124,17 @@
             </div>
 
             <div class="table-container" id="productTable">
+                <div class="col-12">
+                    <div class="botones">
+                        <button id="btnShowProducts" class="btn btn-success" type="button">Listar productos</button>
+                        <button id="btnDeleteAllProducts" class="btn btn-success" type="button">Eliminar BD</button>
+                    </div>
+                </div>
                 <h3 class="mb-4">Productos Actuales</h3>
                 <table class="product-table">
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Nombre</th>
                             <th>Categoría</th>
                             <th>Precio</th>
@@ -143,7 +154,7 @@
         </div>
     </main>
     <footer class="footer">
-        
+
     </footer>
 
 
