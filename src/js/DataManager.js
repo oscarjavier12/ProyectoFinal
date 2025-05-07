@@ -47,7 +47,11 @@ export default class DataManager {
 
     clear() {
         sessionStorage.removeItem(this.KeySession); // Elimina el item del sessionStorage
-        sessionStorage.setItem(this.KeySession, JSON.stringify(this.dbSession));
+        this.dbSession = [];
+    }
+    clearAll() {
+        sessionStorage.clear(); // Elimina todos los items del sessionStorage
+        this.dbSession = []; // Reinicia el array de datos a un array vacío
     }
 }
 

@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
     // Mostrar modal de términos y condiciones
     document.getElementById('showTerms').addEventListener('click', function (e) {
@@ -6,6 +5,17 @@ document.addEventListener('DOMContentLoaded', function () {
         var termsModal = new bootstrap.Modal(document.getElementById('termsModal'));
         termsModal.show();
     });
+
+    // Cargar usuarios desde localStorage si existen
+    if (!localStorage.getItem('users')) {
+        // Inicializar con usuarios predeterminados
+        const defaultUsers = [
+            { name: 'Usuario 1', email: 'usuario1@gmail.com', password: 'usuario1', role: 'user' },
+            { name: 'Administrador', email: 'admin@gmail.com', password: 'administrador', role: 'admin' },
+            { name: 'Programador', email: 'dev@gmail.com', password: 'programador', role: 'programmer' }
+        ];
+        localStorage.setItem('users', JSON.stringify(defaultUsers));
+    }
 });
 
 const login = document.getElementById('login');
@@ -16,24 +26,17 @@ login.addEventListener('submit', (e) => {
     const emailError = document.getElementById('loginEmailError');
     const passwordError = document.getElementById('loginPasswordError');
     const userError = document.getElementById('loginUserError');
+    const passwordError2 = document.getElementById('loginPasswordError2');
+
 
     let isValid = true;
-    let admin = false;
+
     // Validar email
     if (!validateEmail(email.value)) {
         emailError.style.display = 'block';
         isValid = false;
     } else {
         emailError.style.display = 'none';
-        if (email.value === "usuario1@gmail.com" && password.value === "usuario1") {
-            isValid = true;
-        } else if (email.value === "admin@gmail.com" && password.value === "administrador") {
-            admin = true;
-            isValid = true;
-        } else {
-            isValid = false;
-            userError.style.display = 'block';
-        }
     }
 
     // Validar contraseña
@@ -44,16 +47,40 @@ login.addEventListener('submit', (e) => {
         passwordError.style.display = 'none';
     }
 
-    // Si todo es válido, enviar formulario
+    // Si el formato es válido, verificar credenciales
     if (isValid) {
-        sessionStorage.setItem('isLoggedIn', 'true');
-        if (admin) {
-            sessionStorage.setItem('isAdmin', 'true');
-        }else{
-            sessionStorage.setItem('isAdmin', 'false');
-        }
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
+        const foundUser = users.find(user =>
+            user.email === email.value
+        );
+        const foundPassword = users.find(user =>
+            user.password === password.value
+        );
 
-        window.location.href = "index.html";
+        if (foundUser) {
+            userError.style.display = 'none';
+            if (foundPassword) {
+                // Guardar información de sesión
+                sessionStorage.setItem('isLoggedIn', 'true');
+                sessionStorage.setItem('userRole', foundUser.role);
+                sessionStorage.setItem('isAdmin', (foundUser.role === 'admin').toString()); // Mantener para compatibilidad
+                sessionStorage.setItem('isProgrammer', (foundUser.role === 'programmer').toString());
+                sessionStorage.setItem('currentUser', JSON.stringify({
+                    name: foundUser.name,
+                    email: foundUser.email,
+                    role: foundUser.role
+                }));
+
+                // Redireccionar al índice
+                window.location.href = "/src/Index.html";
+            }else {
+                // Mostrar error de contraseña incorrecta
+                passwordError2.style.display = 'block';
+            }
+        } else {
+            // Mostrar error de credenciales inválidas
+            userError.style.display = 'block';
+        } 
     }
 });
 
@@ -77,9 +104,11 @@ register.addEventListener('submit', (e) => {
     const passwordError = document.getElementById('registerPasswordError');
     const confirmError = document.getElementById('registerConfirmPasswordError');
     const termsError = document.getElementById('termsError');
+    const emailExistsError = document.getElementById('emailExistsError') ||
+        createErrorElement('emailExistsError', 'Este correo ya está registrado.');
 
     let isValid = true;
-    let admin = false;
+
     // Validar nombre
     if (name.value.trim() === '') {
         nameError.style.display = 'block';
@@ -94,6 +123,15 @@ register.addEventListener('submit', (e) => {
         isValid = false;
     } else {
         emailError.style.display = 'none';
+
+        // Verificar si el email ya existe
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
+        if (users.some(user => user.email === email.value)) {
+            emailExistsError.style.display = 'block';
+            isValid = false;
+        } else {
+            emailExistsError.style.display = 'none';
+        }
     }
 
     // Validar contraseña
@@ -120,9 +158,75 @@ register.addEventListener('submit', (e) => {
         termsError.style.display = 'none';
     }
 
-    // Si todo es válido, enviar formulario
+    // Si todo es válido, registrar usuario
     if (isValid) {
+        // Obtener usuarios existentes
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
 
+        // Crear nuevo usuario (por defecto como usuario normal)
+        const newUser = {
+            name: name.value.trim(),
+            email: email.value,
+            password: password.value,
+            role: 'user'
+        };
+
+        // Agregar usuario
+        users.push(newUser);
+
+        // Guardar en localStorage
+        localStorage.setItem('users', JSON.stringify(users));
+
+        // Mostrar mensaje de éxito
+        showSuccessMessage('¡Registro exitoso! Ahora puedes iniciar sesión.');
+
+        // Limpiar formulario
+        register.reset();
     }
 });
 
+// Función para crear elementos de error si no existen
+function createErrorElement(id, message) {
+    const emailField = document.getElementById('registerEmail');
+    const errorElement = document.createElement('div');
+    errorElement.id = id;
+    errorElement.className = 'invalid-feedback';
+    errorElement.textContent = message;
+    errorElement.style.display = 'none';
+    emailField.parentNode.appendChild(errorElement);
+    return errorElement;
+}
+
+// Función para mostrar mensaje de éxito
+function showSuccessMessage(message) {
+    // Si existe un contenedor de mensajes, usarlo
+    const messageContainer = document.getElementById('messageContainer') || createMessageContainer();
+
+    // Crear alerta
+    const alertElement = document.createElement('div');
+    alertElement.className = 'alert alert-success alert-dismissible fade show';
+    alertElement.role = 'alert';
+    alertElement.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+
+    // Agregar alerta al contenedor
+    messageContainer.appendChild(alertElement);
+
+    // Remover después de 5 segundos
+    setTimeout(() => {
+        alertElement.classList.remove('show');
+        setTimeout(() => alertElement.remove(), 300);
+    }, 5000);
+}
+
+// Función para crear contenedor de mensajes si no existe
+function createMessageContainer() {
+    const container = document.createElement('div');
+    container.id = 'messageContainer';
+    container.className = 'position-fixed top-0 end-0 p-3';
+    container.style.zIndex = '1050';
+    document.body.appendChild(container);
+    return container;
+}

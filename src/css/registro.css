@@ -30,11 +30,11 @@ body {
     font-weight: bold;
 }
 
-#cardHeader {
+#loginCard {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
 }
-#cardHeader input {
+#loginCard input {
     background-color: #f0dfc8 ;
 }
 

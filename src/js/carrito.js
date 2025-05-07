@@ -158,9 +158,14 @@ form.addEventListener('submit', function (event) {
         showAlert('Por favor, complete todos los campos obligatorios correctamente.', 'danger');
         return; // Detener la ejecución
     }
-
+    
     const formData = new FormData(this);
-
+    const id= formData.get('productId');
+    // Verificar si el ID ya existe en la base de datos
+    if (dataManager.readData().some(articulo => articulo.id === id)) {
+        showAlert('El ID ya existe. Por favor, elija otro.', 'danger');
+        return; // Detener la ejecución
+    }
     // Formatear precio
     const precio = parseFloat(formData.get('productPrice')).toFixed(2);
     // Formatear fecha
@@ -204,7 +209,7 @@ form.addEventListener('submit', function (event) {
     console.log(dataManager.readData())
     // Mostrar mensaje de éxito
     showAlert('Producto agregado correctamente.', 'success');
-
+    document.getElementById('btnShowProducts').click();
     // Resetear el formulario
     this.reset();
     this.classList.remove('was-validated');
@@ -212,6 +217,11 @@ form.addEventListener('submit', function (event) {
 });
 
 document.getElementById('btnShowProducts').addEventListener('click', function () {
+    const data=dataManager.readData(); // Obtener los datos de la base de datos
+    if (data.length === 0) {
+        showAlert('No hay productos para mostrar.', 'warning'); // Mostrar mensaje de advertencia
+        return; // Si no hay datos, salir de la función
+    }
     const dbArticulos = dataManager.readData(); // Obtener los datos de la base de datos
     const tbody = document.getElementById('productTableBody'); // Obtener el cuerpo de la tabla
     agregarFIlaTabla(dbArticulos, tbody); // Llamar a la función para agregar filas a la tabla
@@ -220,12 +230,20 @@ document.getElementById('btnShowProducts').addEventListener('click', function ()
 
 
 document.getElementById('btnDeleteAllProducts').addEventListener('click', function () {
+    const data=dataManager.readData(); // Obtener los datos de la base de datos
+    if (data.length === 0) {
+        showAlert('No hay productos para eliminar.', 'warning'); // Mostrar mensaje de advertencia
+        return; // Si no hay datos, salir de la función
+    }
 
+    if (!confirm('¿Está seguro que desea eliminar todos los productos?')) {
+        return; // Si el usuario cancela, no hacer nada
+    }
     dataManager.clear(); // Limpiar la base de datos
     const tbody = document.getElementById('productTableBody'); // Obtener el cuerpo de la tabla
     tbody.textContent = ""; // Limpiar el contenido de la tabla
     ocultarTablaProductos(); // Ocultar la tabla de productos
-    mostrarAlerta("Los datos han sido eliminados exitosamente", "alert alert-success"); // Muestra un mensaje de éxito
+    showAlert("Los datos han sido eliminados exitosamente", "alert alert-success"); // Muestra un mensaje de éxito
 
 });
 
@@ -292,22 +310,6 @@ function agregarCelda(fila, valor) {
     fila.appendChild(col);
 }
 
-// Función para agregar celda booleana (Si/No)
-function agregarCeldaBooleana(fila, valor) {
-    const col = document.createElement('td');
-
-    // Texto simple para valores booleanos
-    col.textContent = valor;
-
-    // Aplicar estilo según el valor
-    if (valor === 'Si') {
-        col.className = 'text-success';
-    } else if (valor === 'No') {
-        col.className = 'text-danger';
-    }
-
-    fila.appendChild(col);
-}
 
 // Función para formatear fecha
 function formatearFecha(fechaStr) {
