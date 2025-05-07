@@ -206,7 +206,7 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Efectos hover para la tabla */
+/* hover*/
 .product-table tr {
     transition: var(--transition);
 }
@@ -265,7 +265,7 @@ body {
     animation: pulse 1.5s infinite;
 }
 
-/* Mejoras para inputs */
+/* inputs */
 .input-group-text {
     background-color: var(--light-color);
     border-color: #e1e5eb;

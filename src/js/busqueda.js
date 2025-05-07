@@ -1,7 +1,7 @@
 // simulación de una base de datos de productos
 let productsDatabase = [];
 
-// Función para mostrar mensaje
+// mostrar mensaje
 function showMessage(message, type = 'info') {
     const messageElement = document.getElementById('searchMessage');
     messageElement.innerHTML = `
@@ -21,17 +21,9 @@ function showMessage(message, type = 'info') {
     }, 5000);
 }
 
-// Función para cargar productos (simulando una base de datos)
+// cargar productos 
 function loadProducts() {
     // llamar los productos desde la base de datos
-    // Por ahora simulamos algunos productos
-    productsDatabase = [
-        { id: 1, name: "Crema Hidratante", category: "Cremas", price: 15.99, description: "Crema hidratante para piel seca", stock: 50 },
-        { id: 2, name: "Labial Mate", category: "Maquillaje", price: 8.50, description: "Labial de larga duración", stock: 30 },
-        { id: 3, name: "Perfume Floral", category: "Perfumes", price: 25.00, description: "Fragancia floral suave", stock: 20 },
-        { id: 4, name: "Jabón Natural", category: "Cuidado Personal", price: 3.99, description: "Jabón artesanal con ingredientes naturales", stock: 100 },
-        { id: 5, name: "crema Facial", category: "Protección Solar", price: 12.75, description: "FPS 50 protección alta", stock: 45 }
-    ];
 }
 
 // Función para buscar productos
@@ -52,8 +44,6 @@ function searchProducts(searchType, searchTerm) {
         resultsTable.style.display = 'none';
         return;
     }
-
-    // Convertir el término de búsqueda a minúsculas para hacer la búsqueda insensible a mayúsculas
     const term = searchTerm.toLowerCase();
 
     // Filtrar productos según el tipo de búsqueda
