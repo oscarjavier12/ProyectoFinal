@@ -151,11 +151,17 @@ form.addEventListener('submit', function (event) {
 
     // Añadir clase para activar estilos de validación de Bootstrap
     this.classList.add('was-validated');
-    const formData = new FormData(this);
-    const id = formData.get('productId');
-    if (parseInt(id) < 0) {
-        showAlert('El ID no puede ser negativo.', 'danger');
-        return; // Detener la ejecución
+    var negativo = false;
+    var inputsNumber = document.querySelectorAll('input[type="number"]');
+    // Validar que los campos numéricos no sean negativos
+    inputsNumber.forEach(function (input) {
+        if (parseInt(input.value) < 0) {
+            negativo = true;
+        }
+    }
+    );
+    if (negativo) {
+        showAlert('Los campos no pueden tener valores negativos.', 'danger');
     }
     // Validar el formulario
     if (!validateForm(this)) {
@@ -163,7 +169,8 @@ form.addEventListener('submit', function (event) {
         showAlert('Por favor, complete todos los campos obligatorios correctamente.', 'danger');
         return; // Detener la ejecución
     }
-
+    const formData = new FormData(this);
+    const id = formData.get('productId');
 
     // Verificar si el ID ya existe en la base de datos
     if (dataManager.readData().some(articulo => articulo.id === id)) {
