@@ -161,6 +161,10 @@ form.addEventListener('submit', function (event) {
     
     const formData = new FormData(this);
     const id= formData.get('productId');
+    if (parseInt(id) < 0) {
+        showAlert('El ID no puede ser negativo.', 'danger');
+        return; // Detener la ejecución
+    }
     // Verificar si el ID ya existe en la base de datos
     if (dataManager.readData().some(articulo => articulo.id === id)) {
         showAlert('El ID ya existe. Por favor, elija otro.', 'danger');
