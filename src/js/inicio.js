@@ -16,9 +16,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 e.preventDefault();
                 sessionStorage.removeItem('isLoggedIn');
                 sessionStorage.removeItem('isAdmin');
-                window.location.href = "login.html"; // Redirige al login
+                sessionStorage.removeItem('isProgrammer');
+                window.location.href = "/src//html/login.html"; // Redirige al login
 
             });
+            
+
         })
         .catch(error => {
             console.error('Error:', error);

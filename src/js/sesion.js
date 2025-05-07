@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Cargar usuarios desde localStorage si existen
-    if (!localStorage.getItem('users')) {
+    if (localStorage.getItem('users')) {
         // Inicializar con usuarios predeterminados
         const defaultUsers = [
             { name: 'Usuario 1', email: 'usuario1@gmail.com', password: 'usuario1', role: 'user' },
@@ -56,6 +56,7 @@ login.addEventListener('submit', (e) => {
         const foundPassword = users.find(user =>
             user.password === password.value
         );
+        console.log(foundUser)
 
         if (foundUser) {
             userError.style.display = 'none';
