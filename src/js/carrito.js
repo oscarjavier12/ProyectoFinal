@@ -29,7 +29,7 @@ cuerpo.addEventListener('click', function (event) {
         datosCeldas = [];
 
         cells.forEach((cell, index) => {
-            if (index < cells.length - 1 && index !== 0 ) {
+            if (index < cells.length - 1 && index !== 0) {
                 const valorcelda = cell.textContent;
                 datosCeldas.push(valorcelda);
 
@@ -151,20 +151,20 @@ form.addEventListener('submit', function (event) {
 
     // Añadir clase para activar estilos de validación de Bootstrap
     this.classList.add('was-validated');
-
+    const formData = new FormData(this);
+    const id = formData.get('productId');
+    if (parseInt(id) < 0) {
+        showAlert('El ID no puede ser negativo.', 'danger');
+        return; // Detener la ejecución
+    }
     // Validar el formulario
     if (!validateForm(this)) {
         // Mostrar mensaje de error
         showAlert('Por favor, complete todos los campos obligatorios correctamente.', 'danger');
         return; // Detener la ejecución
     }
-    
-    const formData = new FormData(this);
-    const id= formData.get('productId');
-    if (parseInt(id) < 0) {
-        showAlert('El ID no puede ser negativo.', 'danger');
-        return; // Detener la ejecución
-    }
+
+
     // Verificar si el ID ya existe en la base de datos
     if (dataManager.readData().some(articulo => articulo.id === id)) {
         showAlert('El ID ya existe. Por favor, elija otro.', 'danger');
@@ -220,7 +220,7 @@ form.addEventListener('submit', function (event) {
 });
 
 document.getElementById('btnShowProducts').addEventListener('click', function () {
-    const data=dataManager.readData(); // Obtener los datos de la base de datos
+    const data = dataManager.readData(); // Obtener los datos de la base de datos
     if (data.length === 0) {
         showAlert('No hay productos para mostrar.', 'warning'); // Mostrar mensaje de advertencia
         return; // Si no hay datos, salir de la función
@@ -233,7 +233,7 @@ document.getElementById('btnShowProducts').addEventListener('click', function ()
 
 
 document.getElementById('btnDeleteAllProducts').addEventListener('click', function () {
-    const data=dataManager.readData(); // Obtener los datos de la base de datos
+    const data = dataManager.readData(); // Obtener los datos de la base de datos
     if (data.length === 0) {
         showAlert('No hay productos para eliminar.', 'warning'); // Mostrar mensaje de advertencia
         return; // Si no hay datos, salir de la función
@@ -341,7 +341,7 @@ function verificarTablaVacia() {
     const tbody = document.getElementById('productTableBody');
     if (tbody && tbody.children.length === 0) {
         ocultarTablaProductos();
-    }else {
+    } else {
         mostarTablaProductos();
     }
 }
