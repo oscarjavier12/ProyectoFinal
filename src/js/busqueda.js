@@ -75,6 +75,7 @@ function searchProducts(searchType, searchTerm) {
 
     // Mostrar resultados
     if (results.length === 0) {
+        document.getElementById("resultsContainer").style.display = "block"; // Ocultar el contenedor de resultados
         showMessage(`No se encontraron productos que coincidan con "${searchTerm}"`, 'warning');
         noResultsMessage.style.display = 'block';
         resultsTable.style.display = 'none';
