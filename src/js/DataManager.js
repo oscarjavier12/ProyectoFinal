@@ -12,7 +12,7 @@ export default class DataManager {
     }
     readData() {
         return this.dbSession // Devuelve el array de datos almacenado en sessionStorage
-    }
+    } 
     // Update
     updateData(id, objArticulo) {
         this.dbSession = this.dbSession.map(articulo => {

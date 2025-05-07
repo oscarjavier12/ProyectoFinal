@@ -1,8 +1,11 @@
 import buttons from "./buttons.js";
+import Articulo from "./Articulo.js";
+import DataManager from "./DataManager.js";
 document.addEventListener('DOMContentLoaded', function () {
     cargarBootstrapIcons();
     verificarTablaVacia();
 });
+
 // Configuración inicial - Input Range
 const rango = document.getElementById('productCantidad');
 rango.addEventListener('input', function () {
@@ -18,6 +21,7 @@ ocultarTablaProductos();
 // Manejador de eventos para acciones en la tabla
 const cuerpo = document.getElementById('productTable');
 cuerpo.addEventListener('click', function (event) {
+
     // EDITAR FILA
     if (event.target.id === 'btnEditar' || event.target.closest('#btnEditar')) {
         const rowEditar = event.target.closest('tr');
@@ -25,7 +29,7 @@ cuerpo.addEventListener('click', function (event) {
         datosCeldas = [];
 
         cells.forEach((cell, index) => {
-            if (index < cells.length - 1) {
+            if (index < cells.length - 1 && index !== 0 ) {
                 const valorcelda = cell.textContent;
                 datosCeldas.push(valorcelda);
 
@@ -59,31 +63,34 @@ cuerpo.addEventListener('click', function (event) {
 
     // GUARDAR CAMBIOS
     if (event.target.id === 'btnGuardar' || event.target.closest('#btnGuardar')) {
+
         const rowSave = event.target.closest('tr');
-        const cajitaTexto = rowSave.querySelectorAll('input');
+        const id = rowSave.querySelectorAll('td')[0].textContent; // Obtiene el ID de la primera celda de la fila
+        const input = rowSave.querySelectorAll('input'); // Selecciona todas las celdas de la fila
+        const newArticulo = new Articulo();
 
-        cajitaTexto.forEach((input, index) => {
-            const valorNuevo = input.value;
-            input.parentNode.textContent = valorNuevo;
-        });
+        newArticulo.id = id; // Asigna el ID al nuevo objeto Articulo
+        newArticulo.nombre = input[0].value; // Asigna el nuevo nombre
+        newArticulo.categoria = input[1].value; // Asigna la nueva cantidad
+        newArticulo.precio = input[2].value; // Asigna la nueva descripción
+        newArticulo.fecha = input[3].value; // Asigna el nuevo precio
+        newArticulo.descripcion = input[4].value; // Asigna la nueva categoría
+        newArticulo.stock = input[5].value; // Asigna el nuevo tipo de venta
+        newArticulo.destacar = input[6].value; // Asigna el nuevo tipo de venta
+        newArticulo.disponibilidad = input[7].value; // Asigna el nuevo tipo de venta
 
-        buttons.cambioBoton(
-            event,
-            buttons.botones.btnEdit.id,
-            buttons.botones.btnEdit.iconClass,
-            buttons.botones.btnEdit.title,
-            buttons.botones.btnEdit.clase
-        );
-        const cancelarBoton = rowSave.querySelector('#btnCancelar');
-        buttons.cambioBtnSinEvent(
-            cancelarBoton,
-            buttons.botones.btnDelete.id,
-            buttons.botones.btnDelete.iconClass,
-            buttons.botones.btnDelete.title,
-            buttons.botones.btnDelete.clase
-        );
+        dataManager.updateData(id, newArticulo); // Actualiza el objeto en la base de datos
 
-        return;
+        const dbArticulos = dataManager.readData(); // Lee los datos actualizados de la base de datos
+        console.log(newArticulo.nombre); // Muestra los datos actualizados en la consola
+        // obtener el cuerpo de la tabla
+        const tbody = document.getElementById('productTableBody');
+
+        // Agregar celdas con los valores del formulario
+        agregarFIlaTabla(dbArticulos, tbody);
+        mostarTablaProductos(); // Mostrar la tabla de productos
+        showAlert('Producto editado correctamente', 'success'); // Mostrar mensaje de éxito
+        return; // Salir de la función después de guardar
     }
 
     // CANCELAR EDICIÓN
@@ -122,9 +129,10 @@ cuerpo.addEventListener('click', function (event) {
     // ELIMINAR FILA
     if (event.target.id === 'btnEliminar' || event.target.closest('#btnEliminar')) {
         if (confirm('¿Está seguro que desea eliminar este producto?')) {
-            const rowDelete = event.target.closest('tr');
-            rowDelete.remove();
-
+            const rowDelete = event.target.closest('tr'); // Encuentra la fila más cercana al botón
+            const indexDelete = rowDelete.querySelectorAll('td')[0].textContent; // Obtiene el ID de la primera celda de la fila
+            rowDelete.remove(); // Elimina la fila de la tabla
+            dataManager.deleteData(indexDelete); // Elimina el objeto de la base de dato
             // Verificar si la tabla está vacía y ocultarla si es así
             verificarTablaVacia();
             showAlert('Producto eliminado correctamente', 'warning');
@@ -132,11 +140,204 @@ cuerpo.addEventListener('click', function (event) {
     }
 });
 
+const dataManager = new DataManager('Articulos'); // Crear una instancia de DataManager con la clave 'articulos'
+
+
+// Manejador de eventos para envío del formulario
+const form = document.getElementById('productForm');
+form.addEventListener('submit', function (event) {
+    // Prevenir el envío del formulario
+    event.preventDefault();
+
+    // Añadir clase para activar estilos de validación de Bootstrap
+    this.classList.add('was-validated');
+
+    // Validar el formulario
+    if (!validateForm(this)) {
+        // Mostrar mensaje de error
+        showAlert('Por favor, complete todos los campos obligatorios correctamente.', 'danger');
+        return; // Detener la ejecución
+    }
+
+    const formData = new FormData(this);
+
+    // Formatear precio
+    const precio = parseFloat(formData.get('productPrice')).toFixed(2);
+    // Formatear fecha
+    const fecha = formData.get('productDate');
+    const fechaFormateada = formatearFecha(fecha);
+    // Manejar el checkbox
+    const featured = formData.get('productFeatured') ? 'Si' : 'No';
+    // Obtener el valor del radio button seleccionado
+    const availability = formData.get('productAvailability');
+    let availabilityText;
+
+    switch (availability) {
+        case 'now':
+            availabilityText = 'Ahora';
+            break;
+        case 'soon':
+            availabilityText = 'Próximamente';
+            break;
+        case 'preorder':
+            availabilityText = 'Por Pedido';
+            break;
+        default:
+            availabilityText = availability;
+    }
+
+    // Si la validación es exitosa, proceder con la creación de la fila
+    // Recuperar los datos del formulario
+    const articulo = new Articulo(
+        formData.get('productId'),
+        formData.get('productName'),
+        formData.get('productCategory'),
+        `$${precio}`,
+        fechaFormateada,
+        formData.get('productDescription'),
+        formData.get('productCantidad'),
+        featured,
+        availabilityText
+    );
+    dataManager.createData(articulo)
+
+    console.log(dataManager.readData())
+    // Mostrar mensaje de éxito
+    showAlert('Producto agregado correctamente.', 'success');
+
+    // Resetear el formulario
+    this.reset();
+    this.classList.remove('was-validated');
+    rango.nextElementSibling.textContent = '100'; // Resetear el valor mostrado del rango
+});
+
+document.getElementById('btnShowProducts').addEventListener('click', function () {
+    const dbArticulos = dataManager.readData(); // Obtener los datos de la base de datos
+    const tbody = document.getElementById('productTableBody'); // Obtener el cuerpo de la tabla
+    agregarFIlaTabla(dbArticulos, tbody); // Llamar a la función para agregar filas a la tabla
+    verificarTablaVacia(); // Mostrar la tabla de productos
+});
+
+
+document.getElementById('btnDeleteAllProducts').addEventListener('click', function () {
+
+    dataManager.clear(); // Limpiar la base de datos
+    const tbody = document.getElementById('productTableBody'); // Obtener el cuerpo de la tabla
+    tbody.textContent = ""; // Limpiar el contenido de la tabla
+    ocultarTablaProductos(); // Ocultar la tabla de productos
+    mostrarAlerta("Los datos han sido eliminados exitosamente", "alert alert-success"); // Muestra un mensaje de éxito
+
+});
+
+// Función para agregar fila a la tabla
+const agregarFIlaTabla = (dataSession, tbody) => {
+    tbody.textContent = ""; // Limpiar el contenido de la tabla antes de agregar nuevas filas
+
+    for (const articulo of dataSession) {
+        const newRow = document.createElement('tr');
+        const propiedades = ["id", "nombre", "categoria", "precio", "fecha", "descripcion", "stock", "destacar", "disponibilidad"];
+        propiedades.forEach(propiedad => {
+            agregarCelda(newRow, articulo[propiedad]);
+        });
+
+        // Crear celda para acciones con botones con texto
+        const actionCell = document.createElement('td');
+        actionCell.className = 'd-flex gap-2';
+
+        // Botón de editar con icono
+        const editButton = document.createElement('button');
+        editButton.id = 'btnEditar';
+        editButton.className = 'btn btn-sm btn-outline-primary';
+        editButton.title = 'Editar';
+
+        // Crear el icono como elemento DOM
+        const editIcon = document.createElement('i');
+        editIcon.className = 'bi bi-pencil-square';
+        editButton.appendChild(editIcon);
+
+        // Botón de eliminar con icono
+        const deleteButton = document.createElement('button');
+        deleteButton.id = 'btnEliminar';
+        deleteButton.className = 'btn btn-sm btn-outline-danger';
+        deleteButton.title = 'Eliminar';
+
+        // Crear el icono como elemento DOM
+        const deleteIcon = document.createElement('i');
+        deleteIcon.className = 'bi bi-trash';
+        deleteButton.appendChild(deleteIcon);
+
+        // Agregar botones a la celda
+        actionCell.appendChild(editButton);
+        actionCell.appendChild(deleteButton);
+
+        // Agregar celda de acciones a la fila
+        newRow.appendChild(actionCell);
+
+        // Agregar la nueva fila al cuerpo de la tabla
+        tbody.appendChild(newRow);
+    }
+
+};
+
+// Función para agregar celda a fila
+function agregarCelda(fila, valor) {
+    const col = document.createElement('td');
+
+    // Para valores normales de texto, limitar longitud si es necesario
+    if (typeof valor === 'string' && valor.length > 50) {
+        valor = valor.substring(0, 50) + '...';
+    }
+    col.textContent = valor;
+
+    fila.appendChild(col);
+}
+
+// Función para agregar celda booleana (Si/No)
+function agregarCeldaBooleana(fila, valor) {
+    const col = document.createElement('td');
+
+    // Texto simple para valores booleanos
+    col.textContent = valor;
+
+    // Aplicar estilo según el valor
+    if (valor === 'Si') {
+        col.className = 'text-success';
+    } else if (valor === 'No') {
+        col.className = 'text-danger';
+    }
+
+    fila.appendChild(col);
+}
+
+// Función para formatear fecha
+function formatearFecha(fechaStr) {
+    if (!fechaStr) return '';
+
+    const fecha = new Date(fechaStr);
+    return fecha.toLocaleDateString('es-ES', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+}
+
+// Cargar Bootstrap Icons si no está cargado
+function cargarBootstrapIcons() {
+    if (!document.querySelector('link[href*="bootstrap-icons"]')) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css';
+        document.head.appendChild(link);
+    }
+}
+
 // Función para verificar si la tabla está vacía
 function verificarTablaVacia() {
     const tbody = document.getElementById('productTableBody');
     if (tbody && tbody.children.length === 0) {
         ocultarTablaProductos();
+    }else {
+        mostarTablaProductos();
     }
 }
 
@@ -258,179 +459,3 @@ function validateForm(form) {
 
     return isValid;
 }
-
-// Manejador de eventos para envío del formulario
-const form = document.getElementById('productForm');
-form.addEventListener('submit', function (event) {
-    // Prevenir el envío del formulario
-    event.preventDefault();
-
-    // Añadir clase para activar estilos de validación de Bootstrap
-    this.classList.add('was-validated');
-
-    // Validar el formulario
-    if (!validateForm(this)) {
-        // Mostrar mensaje de error
-        showAlert('Por favor, complete todos los campos obligatorios correctamente.', 'danger');
-        return; // Detener la ejecución
-    }
-
-    // Si la validación es exitosa, proceder con la creación de la fila
-    // Recuperar los datos del formulario
-    const formData = new FormData(this);
-
-    // Agregar fila a la tabla
-    const tbody = document.getElementById('productTableBody');
-    agregarFIlaTabla(formData, tbody);
-
-    // Mostrar la tabla (ahora que tiene elementos)
-    mostarTablaProductos();
-
-    // Mostrar mensaje de éxito
-    showAlert('Producto agregado correctamente.', 'success');
-
-    // Resetear el formulario
-    this.reset();
-    this.classList.remove('was-validated');
-    rango.nextElementSibling.textContent = '100'; // Resetear el valor mostrado del rango
-});
-
-// Función para agregar fila a la tabla
-const agregarFIlaTabla = (formData, tbody) => {
-    const fila = document.createElement('tr');
-
-    // Agregar celdas con datos
-    agregarCelda(fila, formData.get('productName'));
-    agregarCelda(fila, formData.get('productCategory'));
-
-    // Formatear precio
-    const precio = parseFloat(formData.get('productPrice')).toFixed(2);
-    agregarCelda(fila, `$${precio}`);
-
-    // Formatear fecha
-    const fecha = formData.get('productDate');
-    const fechaFormateada = formatearFecha(fecha);
-    agregarCelda(fila, fechaFormateada);
-
-    agregarCelda(fila, formData.get('productDescription'));
-    agregarCelda(fila, formData.get('productCantidad'));
-
-    // Manejar el checkbox
-    const featured = formData.get('productFeatured') ? 'Si' : 'No';
-    agregarCeldaBooleana(fila, featured);
-
-    // Obtener el valor del radio button seleccionado
-    const availability = formData.get('productAvailability');
-    let availabilityText;
-
-    switch (availability) {
-        case 'now':
-            availabilityText = 'Ahora';
-            break;
-        case 'soon':
-            availabilityText = 'Próximamente';
-            break;
-        case 'preorder':
-            availabilityText = 'Por Pedido';
-            break;
-        default:
-            availabilityText = availability;
-    }
-
-    agregarCelda(fila, availabilityText);
-
-    // Crear celda para acciones con botones con texto
-    const actionCell = document.createElement('td');
-    actionCell.className = 'd-flex gap-2';
-
-    // Botón de editar con icono
-    const editButton = document.createElement('button');
-    editButton.id = 'btnEditar';
-    editButton.className = 'btn btn-sm btn-outline-primary';
-    editButton.title = 'Editar';
-
-    // Crear el icono como elemento DOM
-    const editIcon = document.createElement('i');
-    editIcon.className = 'bi bi-pencil-square';
-    editButton.appendChild(editIcon);
-
-    // Botón de eliminar con icono
-    const deleteButton = document.createElement('button');
-    deleteButton.id = 'btnEliminar';
-    deleteButton.className = 'btn btn-sm btn-outline-danger';
-    deleteButton.title = 'Eliminar';
-
-    // Crear el icono como elemento DOM
-    const deleteIcon = document.createElement('i');
-    deleteIcon.className = 'bi bi-trash';
-    deleteButton.appendChild(deleteIcon);
-
-    // Agregar botones a la celda
-    actionCell.appendChild(editButton);
-    actionCell.appendChild(deleteButton);
-
-    // Agregar celda de acciones a la fila
-    fila.appendChild(actionCell);
-
-    // Agregar fila al cuerpo de la tabla
-    tbody.appendChild(fila);
-};
-
-// Función para agregar celda a fila
-function agregarCelda(fila, valor) {
-    const col = document.createElement('td');
-
-    // Para valores normales de texto, limitar longitud si es necesario
-    if (typeof valor === 'string' && valor.length > 50) {
-        valor = valor.substring(0, 50) + '...';
-    }
-    col.textContent = valor;
-
-    fila.appendChild(col);
-}
-
-// Función para agregar celda booleana (Si/No)
-function agregarCeldaBooleana(fila, valor) {
-    const col = document.createElement('td');
-
-    // Texto simple para valores booleanos
-    col.textContent = valor;
-
-    // Aplicar estilo según el valor
-    if (valor === 'Si') {
-        col.className = 'text-success';
-    } else if (valor === 'No') {
-        col.className = 'text-danger';
-    }
-
-    fila.appendChild(col);
-}
-
-// Función para formatear fecha
-function formatearFecha(fechaStr) {
-    if (!fechaStr) return '';
-
-    const fecha = new Date(fechaStr);
-    return fecha.toLocaleDateString('es-ES', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
-    });
-}
-
-// Cargar Bootstrap Icons si no está cargado
-function cargarBootstrapIcons() {
-    if (!document.querySelector('link[href*="bootstrap-icons"]')) {
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css';
-        document.head.appendChild(link);
-    }
-}
-
-
-// Inicializar aplicación
-document.addEventListener('DOMContentLoaded', function () {
-    cargarBootstrapIcons();
-    verificarTablaVacia();
-});
