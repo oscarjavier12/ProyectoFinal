@@ -15,7 +15,7 @@ main {
     animation: fadeIn 0.5s ease forwards;
 }
 
-/* Header and Logo Styling */ 
+/* Header and Logo Styling */
 .main {
     background-color: #000000;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
