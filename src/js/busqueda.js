@@ -1,3 +1,5 @@
+import DataManager from "./DataManager.js";
+
 // simulación de una base de datos de productos
 let productsDatabase = [];
 
@@ -24,6 +26,11 @@ function showMessage(message, type = 'info') {
 // cargar productos 
 function loadProducts() {
     // llamar los productos desde la base de datos
+    const datos = new DataManager('Articulos');
+    productsDatabase = datos.readData(); // Obtener los datos de la base de datos
+
+    console.log('Productos cargados:', productsDatabase);
+
 }
 
 // Función para buscar productos
@@ -56,8 +63,10 @@ function searchProducts(searchType, searchTerm) {
     } else if (searchType === 'id') {
         // Verificar si el término es un número (para búsqueda por ID)
         if (!isNaN(term)) {
-            const id = parseInt(term);
+            const id = term;
+
             results = productsDatabase.filter(product => product.id === id);
+            console.log('Resultados de búsqueda por ID:', results);
         } else {
             showMessage('Para buscar por ID debe ingresar un número.', 'warning');
             return;
@@ -81,7 +90,7 @@ function searchProducts(searchType, searchTerm) {
                 <td>${product.id}</td>
                 <td>${product.name}</td>
                 <td>${product.category}</td>
-                <td>$${product.price.toFixed(2)}</td>
+                <td>$${product.price}</td>
                 <td>${product.description}</td>
                 <td>${product.stock}</td>
             `;

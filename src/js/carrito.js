@@ -206,10 +206,9 @@ form.addEventListener('submit', function (event) {
     );
     dataManager.createData(articulo)
 
-    console.log(dataManager.readData())
     // Mostrar mensaje de éxito
     showAlert('Producto agregado correctamente.', 'success');
-    document.getElementById('btnShowProducts').click();
+    //document.getElementById('btnShowProducts').click();
     // Resetear el formulario
     this.reset();
     this.classList.remove('was-validated');
