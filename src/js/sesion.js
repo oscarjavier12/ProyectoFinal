@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const defaultUsers = [
             { name: 'Usuario 1', email: 'usuario1@gmail.com', password: 'usuario1', role: 'user' },
             { name: 'Administrador', email: 'admin@gmail.com', password: 'administrador', role: 'admin' },
-            { name: 'Programador', email: 'dev@gmail.com', password: 'programador', role: 'programmer' }
+            { name: 'Programador', email: 'pro@gmail.com', password: 'programador', role: 'programmer' }
         ];
         localStorage.setItem('users', JSON.stringify(defaultUsers));
     }

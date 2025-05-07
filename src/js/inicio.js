@@ -18,9 +18,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 sessionStorage.removeItem('isAdmin');
                 sessionStorage.removeItem('isProgrammer');
                 window.location.href = "/src//html/login.html"; // Redirige al login
-
             });
-            
+            if (sessionStorage.getItem('isProgrammer') === 'true') {
+                const elementos = document.querySelectorAll('.Usuario');
+
+                // 2. Itera sobre la colección de elementos
+                elementos.forEach(elemento => {
+                    // 3. Accede a la propiedad 'style' de cada elemento y modifica los estilos
+                    elemento.style.display = 'none';
+                });
+                document.getElementById('progr').style.display = 'block'; // Muestra el botón de programador
+
+            }
+
 
         })
         .catch(error => {
