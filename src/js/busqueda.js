@@ -80,23 +80,11 @@ function searchProducts(searchType, searchTerm) {
         resultsTable.style.display = 'none';
     } else {
         showMessage(`Se encontraron ${results.length} producto(s) que coinciden con "${searchTerm}"`, 'success');
+        agregarFIlaTabla(results, tbody); // Llamar a la función para agregar filas a la tabla
 
-        // Mostrar los resultados en la tabla
-        results.forEach(product => {
-            const row = document.createElement('tr');
 
-            // Agregar celdas con los datos del producto
-            row.innerHTML = `
-                <td>${product.id}</td>
-                <td>${product.name}</td>
-                <td>${product.category}</td>
-                <td>$${product.price}</td>
-                <td>${product.description}</td>
-                <td>${product.stock}</td>
-            `;
+        tbody.appendChild(row);
 
-            tbody.appendChild(row);
-        });
     }
 }
 
@@ -119,3 +107,32 @@ document.getElementById('searchForm').addEventListener('submit', function (e) {
 document.addEventListener('DOMContentLoaded', function () {
     loadProducts();
 });
+
+const agregarFIlaTabla = (dataSession, tbody) => {
+    tbody.textContent = ""; // Limpiar el contenido de la tabla antes de agregar nuevas filas
+
+    for (const articulo of dataSession) {
+        const newRow = document.createElement('tr');
+        const propiedades = ["id", "nombre", "categoria", "precio", "descripcion", "stock"];
+        propiedades.forEach(propiedad => {
+            agregarCelda(newRow, articulo[propiedad]);
+        });
+
+        // Agregar la nueva fila al cuerpo de la tabla
+        tbody.appendChild(newRow);
+    }
+
+};
+
+// Función para agregar celda a fila
+function agregarCelda(fila, valor) {
+    const col = document.createElement('td');
+
+    // Para valores normales de texto, limitar longitud si es necesario
+    if (typeof valor === 'string' && valor.length > 50) {
+        valor = valor.substring(0, 50) + '...';
+    }
+    col.textContent = valor;
+
+    fila.appendChild(col);
+}
