@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 sessionStorage.removeItem('isProgrammer');
                 window.location.href = "/src//html/login.html"; // Redirige al login
             });
+            /** 
             if (sessionStorage.getItem('isProgrammer') === 'true') {
                 const elementos = document.querySelectorAll('.Usuario');
 
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('progr').style.display = 'block'; // Muestra el botón de programador
 
             }
+            */
 
 
         })

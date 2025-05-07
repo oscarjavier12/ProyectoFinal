@@ -75,7 +75,7 @@ function searchProducts(searchType, searchTerm) {
 
     // Mostrar resultados
     if (results.length === 0) {
-        document.getElementById("resultsContainer").style.display = "block"; // Ocultar el contenedor de resultados
+        // Ocultar el contenedor de resultados
         showMessage(`No se encontraron productos que coincidan con "${searchTerm}"`, 'warning');
         noResultsMessage.style.display = 'block';
         resultsTable.style.display = 'none';
@@ -122,7 +122,7 @@ const agregarFIlaTabla = (dataSession, tbody) => {
         // Agregar la nueva fila al cuerpo de la tabla
         tbody.appendChild(newRow);
     }
-
+    document.getElementById("resultsContainer").style.display = "block";
 };
 
 // Función para agregar celda a fila
