@@ -1,3 +1,6 @@
+body {
+    background-color: #f0dfc8;
+}
 
 main {
     padding-top: 10px;
@@ -5,7 +8,7 @@ main {
     animation: fadeIn 0.5s ease forwards;
 }
 
-/* Header and Logo Styling */ 
+/* Header and Logo Styling */
 .main {
     background-color: #000000;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -52,7 +55,9 @@ main {
 
 .main-menu a {
     text-decoration: none;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 12px 20px;
     color: #ffffff;
     font-size: 16px;
@@ -67,6 +72,11 @@ main {
     overflow: hidden;
 }
 
+.main-menu a i {
+    font-size: 20px;
+    /* Tamaño aumentado para los iconos */
+}
+
 .main-menu a::before {
     content: '';
     position: absolute;
@@ -78,8 +88,24 @@ main {
     transition: all 0.5s ease;
 }
 
+.menu-text {
+    max-width: 0;
+    opacity: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 0;
+    transition: all 0.3s ease;
+}
+
 .main-menu a:hover::before {
     left: 100%;
+}
+
+.main-menu a:hover .menu-text {
+    max-width: 150px;
+    opacity: 1;
+    margin-left: 10px;
+    /* Aumentado para dar más espacio entre el icono y el texto */
 }
 
 .main-menu a:hover {
@@ -108,6 +134,11 @@ main {
         font-size: 14px;
     }
 
+    .main-menu a i {
+        font-size: 16px;
+        /* Reducir un poco el tamaño en pantallas medianas */
+    }
+
     .imagen {
         width: 130px;
     }
@@ -117,6 +148,11 @@ main {
     .main-menu a {
         padding: 8px 12px;
         font-size: 13px;
+    }
+
+    .main-menu a i {
+        font-size: 15px;
+        /* Mantener visible en pantallas pequeñas */
     }
 
     .imagen {
