@@ -128,15 +128,18 @@ cuerpo.addEventListener('click', function (event) {
 
     // ELIMINAR FILA
     if (event.target.id === 'btnEliminar' || event.target.closest('#btnEliminar')) {
-        if (confirm('¿Está seguro que desea eliminar este producto?')) {
-            const rowDelete = event.target.closest('tr'); // Encuentra la fila más cercana al botón
-            const indexDelete = rowDelete.querySelectorAll('td')[0].textContent; // Obtiene el ID de la primera celda de la fila
+        const rowDelete = event.target.closest('tr'); // Encuentra la fila más cercana al botón
+        const indexDelete = rowDelete.querySelectorAll('td')[0].textContent; // Obtiene el ID de la primera celda de la fila
+
+        // Usar el nuevo modal de confirmación en lugar de confirm()
+        showConfirmModal('¿Está seguro que desea eliminar este producto?', function () {
             rowDelete.remove(); // Elimina la fila de la tabla
             dataManager.deleteData(indexDelete); // Elimina el objeto de la base de dato
             // Verificar si la tabla está vacía y ocultarla si es así
             verificarTablaVacia();
             showAlert('Producto eliminado correctamente', 'warning');
-        }
+        });
+
     }
 });
 
@@ -470,4 +473,35 @@ function validateForm(form) {
     });
 
     return isValid;
+}
+function showConfirmModal(message, confirmCallback, cancelCallback = null) {
+    const modal = document.getElementById('confirmModal');
+    const modalMessage = modal.querySelector('.modal-body');
+    const confirmButton = document.getElementById('btnConfirm');
+    const cancelButton = document.getElementById('btnCancel');
+
+    // Establecer el mensaje del modal
+    modalMessage.textContent = message;
+
+    // Mostrar el modal
+    const bootstrapModal = new bootstrap.Modal(modal);
+    bootstrapModal.show();
+
+
+
+    //Configurar los botone
+    confirmButton.onclick = function () {
+        bootstrapModal.hide();
+        confirmCallback();
+        document.getElementById('btnShowProducts').focus();
+    };
+
+    if (cancelCallback) {
+        cancelButton.onclick = function () {
+            bootstrapModal.hide();
+            cancelCallback();
+            document.getElementById('btnShowProducts').focus();
+        };
+    }
+
 }
