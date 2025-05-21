@@ -243,21 +243,18 @@ document.getElementById('btnShowProducts').addEventListener('click', function ()
 
 
 document.getElementById('btnDeleteAllProducts').addEventListener('click', function () {
-    const data = dataManager.readData(); // Obtener los datos de la base de datos
+    const data = dataManager.readData();
     if (data.length === 0) {
-        showAlert('No hay productos para eliminar.', 'warning'); // Mostrar mensaje de advertencia
-        return; // Si no hay datos, salir de la función
+        showAlert('No hay productos para eliminar.', 'warning');
+        return;
     }
-
-    if (!confirm('¿Está seguro que desea eliminar todos los productos?')) {
-        return; // Si el usuario cancela, no hacer nada
-    }
-    dataManager.clear(); // Limpiar la base de datos
-    const tbody = document.getElementById('productTableBody'); // Obtener el cuerpo de la tabla
-    tbody.textContent = ""; // Limpiar el contenido de la tabla
-    ocultarTablaProductos(); // Ocultar la tabla de productos
-    showAlert("Los datos han sido eliminados exitosamente", "alert alert-success"); // Muestra un mensaje de éxito
-
+    showConfirmModal('¿Está seguro que desea eliminar TODOS los productos?', function () {
+        dataManager.clear();
+        const tbody = document.getElementById('productTableBody');
+        tbody.textContent = "";
+        ocultarTablaProductos();
+        showAlert("Todos los productos han sido eliminados exitosamente", "warning");
+    });
 });
 
 // Función para agregar fila a la tabla
