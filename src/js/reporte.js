@@ -1,6 +1,6 @@
 const { jsPDF } = window.jspdf;
 import DataManager from './DataManager.js';
-import {showAlert} from './carrito.js';
+import { showAlert } from './carrito.js';
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnPdfReport').addEventListener('click', async () => {
         try {
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 articulos.stock,
                 articulos.destacar ? "Si" : "No",
                 articulos.disponibilidad ? "Si" : "No"
-                
+
             ]
             );
             const optiontTable = {
@@ -200,7 +200,10 @@ function numberPage(doc) {
     for (let i = 1; i <= pageCount; i++) {
         doc.setPage(i);
         doc.setFontSize(10);
-        doc.text(`Página ${i} de ${pageCount}`, 10, doc.internal.pageSize.getHeight() - 10);
+        const pageNumberText = `Página ${i} de ${pageCount}`;
+        const textWidth = doc.getTextWidth(pageNumberText);
+        const xCoordinate = doc.internal.pageSize.getWidth() - textWidth - 10;
+        doc.text(pageNumberText, xCoordinate, doc.internal.pageSize.getHeight() - 10);
     }
 
 }
