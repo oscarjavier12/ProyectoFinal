@@ -148,7 +148,7 @@ function encabezado(doc, datosImagen) {
         { align: "center" }
     )
 
-    doc.addImage(datosImagen, 'JPEG', 0, 0, 40, 30); // A4 size in mm
+    doc.addImage(datosImagen, 'JPEG', 10, 4, 25, 25); // A4 size in mm
 
 }
 
