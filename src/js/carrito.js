@@ -403,7 +403,7 @@ function mostarTablaProductos() {
 }
 
 // Función para mostrar alertas
-function showAlert(message, type) {
+export function showAlert(message, type) {
     // Crear elemento de alerta
     const alertElement = document.createElement('div');
     alertElement.className = `alert alert-${type} alert-dismissible fade show`;

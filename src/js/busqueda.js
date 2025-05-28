@@ -82,10 +82,7 @@ function searchProducts(searchType, searchTerm) {
     } else {
         showMessage(`Se encontraron ${results.length} producto(s) que coinciden con "${searchTerm}"`, 'success');
         agregarFIlaTabla(results, tbody); // Llamar a la función para agregar filas a la tabla
-
-
         tbody.appendChild(row);
-
     }
 }
 

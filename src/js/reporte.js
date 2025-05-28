@@ -1,6 +1,6 @@
 const { jsPDF } = window.jspdf;
 import DataManager from './DataManager.js';
-
+import {showAlert} from './carrito.js';
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnPdfReport').addEventListener('click', async () => {
         try {
@@ -18,6 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
             //conectar con local storage
             const dataM = new DataManager("Productos");
             const productos = dataM.readData();
+            if (productos.length === 0) {
+                showAlert("No hay productos para generar el reporte", "warning");
+                return;
+            }
             //console.log(productos);
             const body = productos.map(articulos => [
                 articulos.id,
