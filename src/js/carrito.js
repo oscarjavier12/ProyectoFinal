@@ -143,7 +143,7 @@ cuerpo.addEventListener('click', function (event) {
     }
 });
 
-const dataManager = new DataManager('Articulos'); // Crear una instancia de DataManager con la clave 'articulos'
+const dataManager = new DataManager('Productos'); // Crear una instancia de DataManager con la clave 'articulos'
 
 
 // Manejador de eventos para envío del formulario

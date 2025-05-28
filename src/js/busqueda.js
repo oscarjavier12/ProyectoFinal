@@ -26,7 +26,7 @@ function showMessage(message, type = 'info') {
 // cargar productos 
 function loadProducts() {
     // llamar los productos desde la base de datos
-    const datos = new DataManager('Articulos');
+    const datos = new DataManager('Productos');
     productsDatabase = datos.readData(); // Obtener los datos de la base de datos
 
     console.log('Productos cargados:', productsDatabase);
